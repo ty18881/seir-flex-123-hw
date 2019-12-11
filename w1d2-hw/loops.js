@@ -5,6 +5,12 @@ for (let i=0; i<100; i++){
     console.log(i);
 }
 
+/* Number 2 */
+console.log("Problem Number 2")
+for (let i=99; i>0; i--){
+    console.log(i);
+}
+
 
 /* Number 3 */
 
