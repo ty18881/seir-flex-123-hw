@@ -36,7 +36,49 @@
 
 //  let myString = 'abba';
 // let myString = 'Abba';
-let myString = 'RaDaR';
+// let myString = 'RaDaR';
+let myString = 'Borscht';
+
 
  console.log(`Is ${myString} a palindrome?` );
  console.log(checkPalindrome(myString));
+
+ /**
+  * Question 4:  Function sumArray
+  */
+
+  const sumArray = (inputArray) => {
+     
+    // check if input is an array, if not, return 0;  I read up on JS constructors since typeof on an array
+    // returns "Object"
+
+    if (inputArray.constructor === Array){
+
+    // check if input array contains non-numeric input while iterating through to avoid multiple iterations through the array.
+        let sumOfArray = 0;
+
+        for (let num of inputArray){
+            if (typeof num == "number"){
+            
+            sumOfArray = num + sumOfArray;
+            } else {
+                return 0;
+            }
+
+        }
+        return sumOfArray;
+
+        } else {
+            return 0;
+        }
+        
+    }
+  console.log(sumArray([1,2,3,4,5,6]));
+  console.log(sumArray([10,9,8,7,6,5]));
+  console.log(sumArray(5));
+  console.log(sumArray([10,9,8,7,6,"string"]));
+
+/**
+ * Question 5, step 1:  checkPrime - returns true if the input is a prime number, returns false if not.
+ * Prime numbers are only divisible by 1 and itself.
+ */
