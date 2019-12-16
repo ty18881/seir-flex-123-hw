@@ -80,5 +80,40 @@ let myString = 'Borscht';
 
 /**
  * Question 5, step 1:  checkPrime - returns true if the input is a prime number, returns false if not.
- * Prime numbers are only divisible by 1 and itself.
+ * Prime numbers are only evently divisible by 1 and itself.
+ *
  */
+
+ const checkPrime = (inputArg) => {
+     let sqRoot = Math.sqrt(inputArg); 
+     
+        for (let i=2; i <= sqRoot; i++){
+
+            if (inputArg % i === 0){
+                return false;
+            }
+        }
+     
+
+     return inputArg > 1;
+ }
+
+
+ console.log(checkPrime(17));
+ console.log(checkPrime(24));
+ console.log(checkPrime(2));
+
+ /**
+  * Question 5, step 2:  printPrimes:  print all the prime numbers up to the value provided to the function.
+  * 
+  *
+  */
+ const printPrimes = (inputArg) => {
+     for (let i = 0; i <= inputArg; i++){
+        if (checkPrime(i)) console.log(i);
+    }
+ }
+
+ printPrimes(10);
+ printPrimes(22);
+ printPrimes(48);
