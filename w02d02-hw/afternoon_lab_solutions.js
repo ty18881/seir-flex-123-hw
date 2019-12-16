@@ -210,6 +210,19 @@ then
 spiral(array) # => [1,2,3,4,5,6,7,8,9]
 It should work on any NxM array, so don’t assume the input is a square array. However, every row will have the same number of elements.
 */
+// General logic I think
+// traverse top row
+// push each element into a 1D array
+// traverse last column
+// push each element into the 1D array
+// traverse bottom row
+// traverse first row (leftmost row)
+// repeat with the second from the top row and around until
+// all elements are gone.
+// reverse the 1D array
+// print the 1D array
+// OR we could just create separate arrays, then reverse them, then print them out
+
 
 
 
