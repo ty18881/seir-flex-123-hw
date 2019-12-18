@@ -80,7 +80,7 @@ let myString = 'Borscht';
 
 /**
  * Question 5, step 1:  checkPrime - returns true if the input is a prime number, returns false if not.
- * Prime numbers are only evently divisible by 1 and itself.
+ * Prime numbers are only evenly divisible by 1 and itself.
  *
  */
 
@@ -94,7 +94,8 @@ let myString = 'Borscht';
             }
         }
      
-
+// since primes are divisible by 1, starting the loop at 2 avoids wonky if-then-else statements in the loop
+// if we haven't returned before now, then the input is a prime number.
      return inputArg > 1;
  }
 
@@ -117,3 +118,88 @@ let myString = 'Borscht';
  printPrimes(10);
  printPrimes(22);
  printPrimes(48);
+
+ /**
+  * Question 6: Rock Paper Scissors
+  */
+
+  const randomMove = () => {
+    //   eh, not the best option but it will work.
+    let randNum = Math.floor((Math.random() * 100) +1);
+    // console.log(`number selected is ${randNum}`);
+    let choice = "paper"; // forcing a default value in case we get a prime number.
+    
+    if (randNum % 2 === 0 ) {
+        choice = "rock";
+    } else if (randNum % 3 === 0){
+        choice = "paper";
+    } else if ( randNum % 5 === 0){
+        choice = "scissors";
+    }
+        
+    // console.log(`${choice} is coming back`);
+    return choice;
+  }
+
+// this is what i describe as the brute force method.  there's a more elegant way but my brain is fried.
+  const rockPaperScissors = ( cMove, uMove) => {
+      console.log(`Computer chose ${cMove}`);
+      console.log(`User chose ${uMove}`);
+// if computer chose rock
+      if ( cMove ==="rock" && uMove === "scissors"){
+        console.log(`${cMove} wins`);
+      } else if (cMove === "rock" && uMove === "paper"){
+        console.log(`${uMove} wins`);
+      } else if ( cMove === "rock" && uMove == "rock"){
+          console.log(`Its's a tie ${cMove} = ${uMove}`);
+      }
+
+    //   if computer chose paper
+      if ( cMove ==="paper" && uMove === "rock"){
+        console.log(`${cMove} wins`);
+      } else if (cMove === "paper" && uMove === "scissors"){
+        console.log(`${uMove} wins`);
+      } else if ( cMove === "paper" && uMove == "paper"){
+          console.log(`Its's a tie ${cMove} = ${uMove}`);
+      }
+      
+// if computer chose scissors
+    if ( cMove ==="scissors" && uMove === "paper"){
+        console.log(`${cMove} wins`);
+    } else if (cMove === "scissors" && uMove === "rock"){
+        console.log(`${uMove} wins`);
+    } else if ( cMove === "scissors" && uMove == "scissors"){
+        console.log(`Its's a tie ${cMove} = ${uMove}`);
+    }
+
+
+      } // end of the function here.
+  
+/*
+  rockPaperScissors("rock", "scissors");
+  rockPaperScissors("rock", "paper");
+  rockPaperScissors("rock", "rock");
+*/
+ 
+/** 
+rockPaperScissors("paper", "scissors");
+  rockPaperScissors("paper", "paper");
+  rockPaperScissors("paper", "rock");
+*/
+
+/*
+rockPaperScissors("scissors", "scissors");
+  rockPaperScissors("scissors", "paper");
+  rockPaperScissors("scissors", "rock");
+*/
+
+rockPaperScissors( randomMove(), randomMove());
+
+
+
+
+  /**
+  * Question 6, part 2: Rock Paper Scissors lizard spock
+  * 
+  */
+// Work got busy and I ran out of time so I'm leaving this one for another time.
