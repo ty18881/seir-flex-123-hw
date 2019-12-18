@@ -10,22 +10,21 @@
 <body>
     <!-- The header -->
 <div class="header">
-    <h1>Header</h1>
+    <!-- <h1>Header</h1> -->
 </div>
 
 <!-- Top Navigation Area -->
 
-<div class="leftnav">
-    <a href="#">Oscar</a>
-</div>
+
 <div class="topnav">
-    
+    <!-- <a id="oscar-label" href="#">Oscar</a> -->
+    <p class="oscar-logo">Oscar</p>
     <a href="#">Menu button</a>
-    <a href="#">Log In</a>
-    <a href="#">1-855-672-2788</a>
+    <a class="login" href="#">Log In</a>
+    <a class="phone" href="#">1-855-672-2788</a>
 </div>
     <!-- First Third of the Page -->
-   <div class="firstthird"> <!-- When I refer to below elements using class, my styles don't overwrite the html style defaults. -->
+   <div class="first-third"> <!-- When I refer to below elements using class, my styles don't overwrite the html style defaults. -->
         <h1>Get Covered.</h1>
         <h1>Feel Better.</h1>
         <h2>Sign up to get health insurance for you,</h2>
@@ -37,17 +36,17 @@
    <!-- 2nd Third of the page: the "Learn more" section-->
 
 <div class="row">
-        <div class="column">
+        <div class="column concierge">
             <h3>Concierge</h3>
             <p>Get a personal care team with a nurse.</p>
             <p>Learn More</p>
         </div>
-        <div class="column" >
+        <div class="column doctor" >
                 <h3>Doctor on Call</h3>
                 <p>Talk to a doctor for free in 15 minutes, 24/7</p>
                 <p>Learn More</p>
         </div>
-        <div class="column" >
+        <div class="column family" >
                 <h3>For you and your family</h3>
                 <p>Need health insurance now?</p>
                 <p>Learn More</p>
@@ -56,18 +55,72 @@
     
 <!-- 3rd third of the page:  the Find the Right Plan section -->
 
-    <div class="findplan">
+    <div class="find-plan">
         <h2>Ready to become and Oscar member?</h2>
-        <h1>Find the Right plan</h1>
-        <div class="buttonrow">
-            <div class="buttoncolumn">
-                <button type="button"  name="foryou"></button>
+        <h1>Find the Right plan.</h1>
+        <div class="button-row">
+            <div class="button-column">
+                <button type="button">For You</button>
                 
             </div>
-            <div class="buttoncolumn">
-                <button type="button"  name="forbusiness"></button>
+            <div class="button-column">
+                <button class="unselected" type="button">For Business</button>
             </div>
         </div>
     </div>
+    <!-- Now the footer portion ?? Would this be easier as a nav??? -->
+
+    <div class="footer">
+        <hr class="horizonal-line">
+        <div class="footer-column">
+            <p class="column-title">Products</p>
+            <ul class="column-content">
+                <li>For You & Family</li>
+                <li>For Business</li>
+                <li>For Providers</li>
+            </ul>
+        </div>
+        <div class="footer-column">
+                <p class="column-title">Features</p>
+                <ul class="column-content">
+                    <li>Oscar App</li>
+                    <li>Concierge Teams</li>
+                    <li>Doctor on Call</li>
+                </ul>
+            </div>
+    </div>
+    <div class="footer-column">
+            <p class="column-title">Company</p>
+            <ul class="column-content">
+                <li>Press</li>
+                <li>Careers</li>
+            </ul>
+    </div>
+
+    <div class="footer-column">
+            <p class="column-title">Resources</p>
+            <ul class="column-content">
+                <li>FAQ</li>
+                <li>Blog</li>
+                <li>Brokers</li>
+                <li>Providers</li>
+                <li>Search Doctors & Drugs</li>
+                <li>Find Forms</li>
+            </ul>
+        </div>
+        <div class="footer-column">
+                <p class="column-title">Legal</p>
+                <ul class="column-content">
+                    <li>En Espanol</li>
+                    <li>Languages</li>
+                    <li>Terms of Service</li>
+                    <li>Privacy Policy</li>
+                    <li>Non-Discrimination</li>
+                    <li>Notice</li>
+                    <li>Compliance</li>
+                </ul>
+            </div>
+</div>
+</div>
 </body>
 </html>
