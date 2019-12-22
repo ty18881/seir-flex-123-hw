@@ -181,17 +181,16 @@ console.log(oddBonds);
 
 let totalGross = 0;
 // must convert the gross value of each film into a number before adding.
-// that means stripping off the $ and stripping out the commas.
+// that means stripping off the $ and stripping out the commas, then converting to a number.
 
 for (let movie in bondFilms){
     
     let currNum = parseInt(bondFilms[movie].gross.replace("$", "").replace(/,/g,""));
-    //  let currNum = parseInt(bondFilms[movie].gross.replace(/,|$/g,""));
+    
     // console.log(`Gross: ${currNum}`);
     totalGross = totalGross + currNum;
     
 }
-
 
 // Can I add the dollar sign and commas back in?  Yes, found this function on Stack Overflow
 // it adds commas after every three numbers, EXCLUDING the numbers after the decimal point.
@@ -205,3 +204,53 @@ function numberWithCommas(x) {
 // console.log(`Total Gross of Bond Films: ${totalGross}`);
 // console.log("Total Gross: "+ numberWithCommas(totalGross));
 console.log(`Total Gross: $ ${numberWithCommas(totalGross)}`);
+
+
+/**Hungry for More - Return the object the represents the actor who has appeared in the fewest Bond films */
+
+// Iterate through the array of Bond films.
+// each time you see the actor, increment the actor's appearance count
+// once done iterating, print object that corresponds to the actor with the lowest appearance count.
+
+/** Set actorName = ""
+ * Set actorCount = 0;
+ * Begin iterating through the Bond film array
+*   actorName = actor in the object we're examining
+*   actorCount+=1;
+*   push actorName and actorCount into an array (maybe in actorAppearances object??)
+* When you are done creating the new actorFrequency array,
+* iterate through that array to identify the fewest appearances.
+* use that actor's name as a key back into the original bondFilms array 
+* print the object that applies to that actor.
+* Could we use a hash table here?  where actor name is the hash key and the value is the number of appearances?
+* or maybe the film object is the hash key and number of appearance is the key?
+*/
+
+const actorFreq = [];
+let freqCount = 0;
+let currActor = "";
+
+for (let movie in bondFilms){
+    console.log(bondFilms[movie].actor);
+    console.log(bondFilms[movie].title);
+    
+    if (currActor !== bondFilms[movie].actor){
+        currActor = bondFilms[movie].actor;
+        freqCount = freqCount +1;
+
+        actorFreq.push( {actor: currActor, appearCount: freqCount});
+    } else {
+        // increment count for this actor in the existing object
+
+    }
+    
+    
+}
+
+
+console.log(Object.keys(bondFilms));  // Returns array of  index of each object in the bondFilm array. [0, 1, 2, 3, ...]
+// how about keys of the keys??
+
+console.log(Object.keys(Object.keys(bondFilms)) );
+
+
