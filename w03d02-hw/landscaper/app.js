@@ -115,7 +115,7 @@ while ( player.wallet < 500){
     console.log(`Num Lawns ${player.lawnCount} Money: ${player.wallet}`);
 }
 
-alert(`Congratulations ${player.name}!  You've won the landscaping game!  You earned ${player.wallet} mowing ${player.lawnCount} lawns`);
+alert(`Congratulations ${player.name}!  You've won the landscaping game!  You earned ${player.wallet} mowing for ${player.lawnCount} days`);
 
 
 
