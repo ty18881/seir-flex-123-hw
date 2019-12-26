@@ -230,27 +230,67 @@ const actorFreq = [];
 let freqCount = 0;
 let currActor = "";
 
-for (let movie in bondFilms){
-    console.log(bondFilms[movie].actor);
-    console.log(bondFilms[movie].title);
-    
-    if (currActor !== bondFilms[movie].actor){
-        currActor = bondFilms[movie].actor;
-        freqCount = freqCount +1;
 
-        actorFreq.push( {actor: currActor, appearCount: freqCount});
+
+
+// for (let movie in bondFilms){
+
+// scroll through the actorFreq array.  Compare the current actor with entries in the actorFreq array.
+// If we find the actor in the actorFreq array, increment the appearance variable.
+// If not, then add the actor to the actorFreq array and set appearance to one.
+
+/* The below code doesn't work.  We end up in an infinite loop because one array is growing as we 
+* attempt to test items within it.
+        if (actorFreq === undefined || actorFreq.length == 0){
+            actorFreq.push( {name: bondFilms[movie].actor, appearance: 1});
+        }
+        else {
+        // for (let actor in actorFreq){
+            for (let i=0; i< actorFreq.length; i++){
+            
+            if (actorFreq[i].name === bondFilms[movie].actor) {
+                console.log(`Recognized the actor ${bondFilms[movie].actor}.  Incrementing the appearance count`);
+                // console.log(`Already on the freq array:  ${bondFilms[movie].actor} to the frequency array`);
+                actorFreq[i].appearance+=1; 
+            } 
+            else {
+                console.log(`A new entry: Adding ${bondFilms[movie].actor} to the actorFreq array`);
+                actorFreq.push( {name: bondFilms[movie].actor, appearance: 1});
+                // console.log(`Actor Frequency array: ${actorFreq}`);
+            }
+     
+        }
+    */
+
+
+    // actorFreq.push(bondFilms[movie].actor);
+// }
+
+/* I got stuck and ran out of time.
+const actorFreq2 = [];
+let currName = "";
+
+for (let i=0; i <actorFreq.length; i++){
+    if (actorFreq2 === undefined || actorFreq2.length == 0){
+        actorFreq2.push( {name: actorFreq[i], appearance: 1});
+        currName = actorFreq2[i];
+    } else if (actorFreq[i] !== currName){
+        actorFreq2.push( {name: actorFreq[i], appearance: 1});
+        currName = actorFreq2[i];
     } else {
-        // increment count for this actor in the existing object
+            // identify the record in actorFreq2, the update the appearance count.
+            actorFreq[i].name
 
     }
-    
-    
+
+    }
 }
 
-
-console.log(Object.keys(bondFilms));  // Returns array of  index of each object in the bondFilm array. [0, 1, 2, 3, ...]
+console.log(actorFreq);
+*/
+// console.log(Object.keys(bondFilms));  // Returns array of  index of each object in the bondFilm array. [0, 1, 2, 3, ...]
 // how about keys of the keys??
 
-console.log(Object.keys(Object.keys(bondFilms)) );
+// console.log(Object.keys(Object.keys(bondFilms)) );
 
 
