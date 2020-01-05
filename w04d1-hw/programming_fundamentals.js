@@ -32,3 +32,51 @@
 
 /** Separation of concerns */
 // Functions should specialize and not have overlapping responsibilities.
+
+
+/** Commenting Code */
+
+// function declaration, fat arrow notation
+const f = l => {
+    // initializing some variables within scope of the function.
+    let es = 0, p = 0, c = 1, n = 0
+
+    // LOOP:  
+    while (c <= l) {
+        // assigning n a value based upon the values of c and p.
+        console.log(`C current value: ${c}`);
+      n = c + p
+      console.log(`N current value: ${n}`);
+    //   I think this is an assignment statement but I'm not familiar with this syntax.
+      [c, p] = [n, c]
+
+      console.log(`++ C current value: ${c}`);
+      console.log(`++ P current value: ${p}`);
+      console.log(`++ N current value: ${n}`);
+      es += (c % 2 === 0) ? c : 0
+
+      console.log(`ES current value: ${es}`);
+      console.log(`+++ C current value: ${c}`);
+    }
+    return es
+  }
+
+  console.log(f(55))
+// this function adds the even fibonacci numbers up to the limit provided to the function.
+// in this case, 2 + 8 +34 = 44
+
+/** In keeping with one of our programming principals (write code for the maintainer): What would have been a more semantic name for this function */
+// "addEvenFibNumbers" would be marginally better
+// maybe variable names like currentFib, previousFib, nextFib, maxFib would increase readability of the code.
+
+/** If you started a new job and your project was to expand the functionality of this function by allowing a second argument and 
+ * then based on that second argument, returning the sum of even or odd numbers, which code would you rather start working with f or f2? */
+// Start with f2 for sure.  
+
+/** Finally, the 'shorter' code style doesn't use semi-colons, except for the fourth line. Remove this semi-colon! Run the code, is this semi-colon necessary? */
+// The code executed in the same manner when I removed the semi-colon.
+
+
+
+
+
