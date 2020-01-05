@@ -50,6 +50,36 @@ console.log(bottle.cap.color);
 
   console.log(apartmentBuilding[1][1])
 
-  
+  /** Combine objects, arrays, and functions more than one level deep */
 
+  /**1.  Create a function knit that returns an object that has the following kinds of properties item:
+   *  scarf, size : 6ft etc. Log a value of that object (hint: call the function and then call a property on the return value). */
+
+   const knit = () => {
+       let theThing = { item: "scarf", length: "4 feet", color: "blue ombre"}
+       return theThing
+   }
+
+   console.log(knit().color)
+
+   /**2.  Create a function crayonSelector that returns an object that has an array (you can reuse your crayonBox object). 
+    * Log one of the elements of that array. */
+
+    const crayonSelector = () => {
+        return crayonBox
+    }
+console.log(crayonSelector().colors[3])
+
+    /** 3.  Create a function powerButton that returns a function called options - 
+     * options should console.log a simple message like select a song. Call that inner function */
+
+const options = () =>{
+    console.log("What song can we play for you today?");
+}
+
+const powerButton = () => {
+    return options();
+}
+
+powerButton();
  
