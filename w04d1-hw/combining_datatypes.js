@@ -82,4 +82,142 @@ const powerButton = () => {
 }
 
 powerButton();
- 
+
+/** Model a Vending Machine */
+/* vendingMachine
+ * location:  addressHere,
+ * snacks: [ {name: "cheezIts", price: 1}, {name: "Doritos", price: 1}, {name: "Kind Bar", price: 2}]
+ * const vend = (selection) => {
+ * return snacks[selection]
+ * }
+ */
+
+ const vendingMachine = {
+     location: "11 W. 19th Street",
+     snacks: [ {name: "cheezIts", price: 1}, {name: "Doritos", price: 1}, {name: "Kind Bar", price: 2}],
+     vend: function (selection)  { 
+         
+
+        if (selection > this.snacks.length){
+            return "Invalid Selection. Please try again!"
+        }
+        else {
+            return this.snacks[selection]
+        }
+        
+ }
+};
+
+ console.log(vendingMachine)
+
+ console.log(vendingMachine.vend(2));
+ console.log(vendingMachine.vend(4));
+
+ /** Callbacks  */
+ /** 1.  ADD Function - calculates the sum of two numbers
+  * Check for value types of the arguments before calculating the sum. 
+  * would the data type check be the callback?
+  */
+ const isNumber = (inputNumber) => typeof inputNumber === "number"
+
+
+ const addNumbers = (input1, input2, callback) => {
+     if (callback(input1) && callback(input2)){
+         return input1 + input2;
+     }
+     else {
+         return "One of your arguments is not a number."
+     }
+ }
+
+ console.log(addNumbers(1, 2, isNumber))
+ console.log(addNumbers(1, "2", isNumber))
+
+  /** 2.  Make a function subtract that takes two arguments (numbers) and subtracts them */
+  const subtractNumbers = (input1, input2, callback) => {
+    if (callback(input1) && callback(input2)){
+        return input1 - input2;
+    }
+    else {
+        return "One of your arguments is not a number."
+    }
+}
+
+console.log(subtractNumbers(2,4, isNumber))
+console.log(subtractNumbers("2",4, isNumber))
+console.log(subtractNumbers("input",4, isNumber))
+
+
+/** 3.  Make a function multiply that takes two arguments and multiplies them */
+
+const multiplyNumbers = (input1, input2, callback) => {
+    if (callback(input1) && callback(input2)){
+        return input1 * input2;
+    }
+    else {
+        return "One of your arguments is not a number."
+    }
+}
+
+console.log(multiplyNumbers(5,2,isNumber))
+console.log(multiplyNumbers("5",2,isNumber))
+
+
+/** 4.  Make a function divide that takes two arguments and divides them*/
+const divideNumbers = (input1, input2, callback) => {
+    if (callback(input1) && callback(input2)){
+        return input1 / input2;
+    }
+    else {
+        return "One of your arguments is not a number."
+    }
+}
+
+console.log(divideNumbers(10,2,isNumber))
+console.log(divideNumbers(15,2,isNumber))
+console.log(divideNumbers("20",2,isNumber))
+
+/** 5.  Make a function calculate that takes three arguments. 
+ * Assume the two arguments are a number ie num1, num2 and a function called operates (a callback).
+6.  Make it so that when calculate is invoked, the callback "operates" on the numbers and returns the value.
+*  I think I covered this in the items above.
+*/
+
+
+
+/*
+7.  Call calculate 4 times, each time using one of the operation functions you wrote 
+*/
+// Please see items 1-4 above.
+
+/** Function Definition Placement */
+
+// have to define the function before it can be called.
+/* const bar = () => {
+    console.log('bar here');
+}
+
+bar();
+
+const foo = () => {
+    console.log('foo here');
+}
+
+foo();
+*/
+
+/** Error Reading */
+// Missing initializer in const declaration.  With the fat arrow syntax, 
+// we need to have an = between foo and the ()
+// Once you add the =, then we receive "Cannot Access 'foo' before initialization"
+// basically, we're trying to call a function before it has been declared and that won't work because
+// JS reads the file sequentially from top to bottom.
+
+
+const foo = ()=>{
+    console.log('hi');
+}
+
+foo();
+
+
