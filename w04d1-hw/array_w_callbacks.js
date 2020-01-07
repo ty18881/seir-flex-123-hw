@@ -204,6 +204,7 @@ function checkIsPanagram(input) {
         }
         
         // Note, this ignores punctuation and focuses on lowercase letters.
+        // if the character code represents a lowercase letter, add it to our hashtable.
         if (ch >= 97 && ch <= 122) {
             hash[ch] = hash[ch] ? hash[ch] + 1 : 1;
         }
