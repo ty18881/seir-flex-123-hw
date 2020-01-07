@@ -131,3 +131,101 @@ const hasAInTheWord = (inputWord) => inputWord.includes("a")
 
 console.log(`Any items with letter A? ${panagram.some(hasAInTheWord)}`)
 
+/** Hungry for More
+ * 1. Calculate sum of nums array using reduce()
+ * 2. Concatenate all the words using reduce()
+ */
+
+ const calculateSum = (runningTotal, inputVal) => runningTotal + inputVal
+
+ console.log(`The sum of the NUMS array: ${nums.reduce(calculateSum)}`)
+
+ const concatenateAll = (currentString, inputVal) => currentString + inputVal
+
+ console.log(`The words strung together: ${panagram.reduce(concatenateAll)}`)
+
+// original array remains unchanged.
+ console.log(`original array: ${panagram}`)
+
+ /** Sorting */
+ /** 1.  Sort nums without any arguments 
+  * NOTE:  this method changes the original array as per W3
+ */
+
+ console.log(`Sorted Nums: ${nums.sort()}`);
+ // as expected, the ordering is correct. Looks like the method is treating these all like strings instead of numbers.
+
+ // Let's try it again.  Sorting in descending order.
+
+ console.log(`NUMS sorted descending: ${nums.sort(function(a,b){ return b-a})}`);
+
+// sorting in ascending order.
+
+ console.log(`NUMS sorted descending: ${nums.sort(function(a,b){ return a-b})}`);
+
+ /** 2.  Sorting panagrams without any arguments */
+
+ console.log(`Sorted Panagrams: ${panagram.sort()}`)
+ // the capitalized word appears first, then the remaining words are in alphabetical order by first letter
+
+//  sorting in descending order
+console.log(`Panagram Sorted Descending: ${panagram.sort().reverse()}`)
+
+/** Array Methods Challenge Problems *
+ * 
+ * /
+ 
+ 
+/* const panagram = ['The', 'quick','brown','fox', 'jumps', 'over', 'the', 'lazy', 'dog']
+1.  isPanagram
+* Panagram = sentence that contains at least one instance of every letter of the English alphabet.
+BEGIN LOOP
+    Make each item lowercase
+    Get equivalent character code
+    verify character code is within character codes for a-z (97 -> 122)
+    if yes => push item into hash table with letter as the key
+    else => do nothing
+END LOOP
+if number of items in the hash table == 26 => you have a panagram
+*/
+
+
+
+function checkIsPanagram(input) {
+    var hash = {};
+    
+    for (var i=0; i<input.length; i++) { // LOOP through the array of words.
+        for (let j=0; j < input[i].length; j++){ // loop through the letters of the word
+
+        var ch = input[i].charCodeAt(j);
+
+        if (ch >= 65 && ch <= 90) { // this is a substitute for using toLowerCase() on each.  Yes, I borrowed this logic.
+            ch += 32; // take the uppercase code and 'convert' it to the corresponding lowercase code.
+        }
+        
+        // Note, this ignores punctuation and focuses on lowercase letters.
+        if (ch >= 97 && ch <= 122) {
+            hash[ch] = hash[ch] ? hash[ch] + 1 : 1;
+        }
+        }
+    }
+
+    if (Object.keys(hash).length === 26) { // if we have 26 entries in our hash table, we've hit all the letters of the English alphabet.
+        console.log('panagram');
+    }
+    else {
+        console.log('not panagram');
+    }
+} 
+
+checkIsPanagram(panagram)
+
+const randomArray = ["always", "hello", "maybe"]
+
+checkIsPanagram(randomArray)
+
+const anotherPanagram = ['We', 'promptly', 'judged', 'antique', 'ivory', 'buckles', 'for', 'the', 'next', 'prize']
+
+checkIsPanagram(anotherPanagram)
+
+
