@@ -73,7 +73,9 @@ console.log(AlienShip);
 alert("Welcome to Space Battle.");
 // let userWantsToPlay = prompt("would you like to play?");
 
-let firstAlienShip = new AlienShip(3, 2, .6);
+// let firstAlienShip = new AlienShip(3, 2, .6);
+
+let firstAlienShip = new AlienShip(6, 4, .8);
 
 // Turn by turn logic
 // ship initiates attack
@@ -89,6 +91,8 @@ let firstAlienShip = new AlienShip(3, 2, .6);
 // BACK TO "ship initiates attack" step to repeat the loop.
 
 // We always begin with the Aliens on the offensive.
+// this looks like a beginGame function.
+
 let numBadGuys = 1;
 let currAttacker = firstAlienShip;
 let currTarget = ussSchwarzenegger;
@@ -100,6 +104,7 @@ let numBadGuysDestroyed = 0;
 
 
 // while all players still have hull strength, keep playing.
+// this looks like the beginning of a playGame function.
 
 while ( goodGuyDestroyed === false && numBadGuysDestroyed < numBadGuys ){
     
@@ -134,8 +139,10 @@ while ( goodGuyDestroyed === false && numBadGuysDestroyed < numBadGuys ){
 
 // switch attackers then go back and do it all again.
 
-currTarget = firstAlienShip;
-currAttacker = ussSchwarzenegger;
+tempTarget = currAttacker;
+currAttacker = currTarget;
+currTarget = tempTarget;
+
 
 }
 
