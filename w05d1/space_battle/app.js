@@ -101,12 +101,15 @@ let numBadGuysDestroyed = 0;
 
 // while all players still have hull strength, keep playing.
 
-// while ( goodGuyDestroyed === false && numBadGuysDestroyed <= numBadGuys ){
+while ( goodGuyDestroyed === false && numBadGuysDestroyed < numBadGuys ){
     
+    console.log(`Current Target = ${currTarget.name}`);
+    console.log(`Current Attacker = ${currAttacker.name}`);
+
     currShotAccuracy = Math.random(); 
     console.log(`Current Shot: ${currShotAccuracy}`);
 
-    if (currShotAccuracy < currAttacker.accuracy) {
+    if (currShotAccuracy <= currAttacker.accuracy) {
         console.log(`Direct Hit on ${currTarget.name}`);
         currTarget.calcHullStrength(currAttacker.firepower);
         console.log(`Hull Strength down to ${currTarget.hull}`);
@@ -116,7 +119,7 @@ let numBadGuysDestroyed = 0;
         // if a bad guy gets destroyed, game continues.
 
         if (isTargetDistroyed){
-            console.log(`Target: ${currTarget} has been destroyed`);
+            console.log(`Target: ${currTarget.name} has been destroyed`);
             if (currTarget.name === "good guy"){
                 goodGuyDestroyed = true;
             } else {
@@ -129,8 +132,12 @@ let numBadGuysDestroyed = 0;
         console.log("Dodged a bullet!");
     }
 
-// switch attackers.
-// }
+// switch attackers then go back and do it all again.
+
+currTarget = firstAlienShip;
+currAttacker = ussSchwarzenegger;
+
+}
 
 // Battle
 // if (Math.random() < alien[0].accuracy) {
