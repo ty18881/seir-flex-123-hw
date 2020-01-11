@@ -1,0 +1,17 @@
+//CallBack
+​
+const nine_nineBottles = (numberObottles)=> {
+  console.log(numberObottles + " beers on the wall " + numberObottles+ " bottles of bEER!\n Take One Down Pass It Around " + (numberObottles-1) + " beers on the wall.");
+}
+​
+​
+const exampleFunc = () => {
+  for(i= 99; i> 0;i--){
+  console.log(nine_nineBottles(i))
+  }
+}
+​
+console.log(exampleFunc());
+// for(i= 99; i> 0;i--){
+//   console.log(nine_nineBottles(i))
+// }
