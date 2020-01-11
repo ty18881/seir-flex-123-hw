@@ -1,6 +1,6 @@
 console.log("it's working");
 /**I had to start over.  I didn't read the spec carefully and coded myself into a corner where
- * I couldn't prompt the user to retreat or attack with some ugly code.
+ * I couldn't prompt the user to retreat or attack without some seriously ugly code.
  * So I went with the code Ira shared during the code-a-long as my base.
  */
 
@@ -69,8 +69,12 @@ let playerShip = {
 
   
   // developing a fleet of alien ships
+  // random number of ships have been sent to attack.
+  // want to make sure we have at least two ships.
+
+  let numEnemies = Math.floor(Math.random() * 30 +2);
   enemies = [];
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < numEnemies; i++) {
     enemies.push(new AlienShip());
   }
   console.log(enemies);
@@ -113,6 +117,12 @@ let playerShip = {
     // Enemy now has a turn to attack.
     enemies[0].attack();
   }
+}
+
+if (enemies.length === 0){
+  console.log("Congratulations! You've successfully fended off the invading forces.  A grateful Galaxy thanks you!");
+} else if (!gameState.playerIsAlive) {
+  console.log("We'll remember you fondly.  Thank you for your service");
 }
 console.log("Game Over!  Thanks for playing");
 
