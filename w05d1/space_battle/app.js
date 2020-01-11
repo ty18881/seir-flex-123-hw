@@ -1,110 +1,119 @@
 console.log("it's working");
+/**I had to start over.  I didn't read the spec carefully and coded myself into a corner where
+ * I couldn't prompt the user to retreat or attack with some ugly code.
+ * So I went with the code Ira shared during the code-a-long as my base.
+ */
 
-// Create USS Schwarzenegger
-
-let ussSchwarzenegger = {
-name: "good guy",
-hull:  20,
-firepower:  5,
-accuracy:  0.7,
-isDestroyed:  false,
-
-calcHullStrength: function(attackerFirepower) { 
-    this.hull-= attackerFirepower;
-},
-
-checkIsDestroyed: function() {
-    if (this.hull <= 0){
-        this.isDestroyed = true;
+let playerShip = {
+  hull: 20,
+  firepower: 5,
+  accuracy: 0.7,
+  // Add methods for battle here
+  attack: enemyShip => {
+    console.log("Player attacking Alien ship");
+    // Check for hit success based on playerShip accuracy:
+    if (Math.random() < playerShip.accuracy) {
+      console.log("Attack hit!");
+      enemyShip.hull -= playerShip.firepower;
     } else {
-        this.isDestroyed = false;
+      console.log("Attack missed!");
     }
-
-    },
-
-    attack: alienShip => {
-            console.log("Starfleet is attacking");
-            if (Math.random() < this.accuracy){
-                console.log("Starfleet got a hit!");
-                alienShip.hull -= this.firepower;
-            } else {
-                console.log("Darn, Starfleet missed");
-            }
-    }
-    
+    console.log(enemyShip);
+    // if (Math.random() < alien[0].accuracy) {
+    // console.log('You have been hit!');
+  }
 };
 
 
-
-// Define AlienShip class
-// need to recalculate hull strength after each hit.
-// after each recalculation, need to check if the ship is destroyed.
-
-class AlienShip{
-    name = "bad guy";
-    constructor (){
-        this.hull = Math.floor(Math.random() * 4) + 3;
-        this.firepower = Math.floor(Math.random() * 3) + 2;
-        this.accuracy = (Math.floor(Math.random() * 3) + 6) / 10;
-        this.isDestroyed = false;
+  // Define an AlienShip class
+  class AlienShip {
+    constructor() {
+      // Make hull random between 3 and 6
+      this.hull = Math.floor(Math.random() * 4 + 3);
+      // Make random between 2 and 4
+      this.firepower = Math.floor(Math.random() * 3 + 2);
+      // TODO: Make random between .6 and .8
+      this.accuracy = Math.floor(Math.random() * 3 + 6) * 0.1;
     }
-    
-
-    // calculate hull strength
-    calcHullStrength(attackerFirepower) {
-        this.hull -= attackerFirepower;
-    }
-
-    // check if ship is Destroyed
-    checkIsDestroyed() {
-        if (this.hull <= 0) {
-            this.isDestroyed = true;
-            return this.isDestroyed;
-        } else {
-            this.isDestroyed = false;
-            return this.isDestroyed;
-        }
-    }
-
     attack() {
-        console.log("Alien Ship attacking");
-        // Check for hit or miss:
-        if (Math.random() < this.accuracy) {
-          console.log("Alien ship scored a hit!");
-          playerShip.hull -= this.firepower;
-          console.log(`Good Guys remaning hull strength: ${playerShip.hull}`);
-        } else {
-          console.log("Alien ship missed");
-        }
+      console.log("Alien Ship attacking");
+      // Check for hit or miss:
+      if (Math.random() < this.accuracy) {
+        console.log("Alien ship hit player!");
+        playerShip.hull -= this.firepower;
+        console.log(`Player Ship hull remaining: ${playerShip.hull}`);
+      } else {
+        console.log("Alien ship missed");
       }
-    
-}
-
-console.log(ussSchwarzenegger);
-console.log(AlienShip);
-
-/** Welcome player to the game
- * General Instructions given
- * mobilize the alienFleet.
- */
-
-//  capture player's response after each salvo.
-let playerChoice = null;
-
-  // this will hold all the ships of the alien fleet.
- let alienFleet = [];
- let alienShip = new AlienShip();
-
-
-// start the game here.  Our team fires the first salvo.  Ask if they wish to continue.
-
-ussSchwarzenegger.attack(alienShip);
-
-if (alienShip.hull < 0){
-    // console.log("Alien attacker has been destroyed");
-    playerChoice = prompt("Alien attacker has been destroyed.  Attack or Retreat?");
-    if (playerChoice === "Retreat"){
-        console.log("Return to homebase and regroup.");
-        // break;
     }
+  }
+
+  // Define a game object
+  let gameState = {
+    playerIsAlive: () => {
+      // return true if player is alive
+      return playerShip.hull > 0;
+    },
+    checkWin: () => {
+      // return true if player has won the game
+      // win = all alien ships are destroyed.
+      return enemies.length === 0;
+    }
+  };
+
+  
+  // Start the game
+  console.log("Generating enemy ships");
+  // enemy = new AlienShip();
+  // console.log(enemy);
+
+  
+  // developing a fleet of alien ships
+  enemies = [];
+  for (let i = 0; i < 6; i++) {
+    enemies.push(new AlienShip());
+  }
+  console.log(enemies);
+  
+  // while (gameState.playerIsAlive()) {
+
+  
+ while (gameState.playerIsAlive() && !gameState.checkWin()) {
+  
+  
+  // attack the first ship in the alien fleet.
+
+  //PROBLEM (I think):  if we reach this point after we destroy a ship, we end up attacking the same alien ship twice in a row.
+  // if we miss after destroying the previous ship, we skip one of the enemy's turns to attack.
+
+    playerShip.attack(enemies[0]);
+
+  // check if the enemy has been destroyed.
+
+  if (enemies[0].hull <= 0){
+    console.log("enemy has been destroyed");
+
+    //prompt fighter to continue or retreat.
+
+    let response = prompt("Enemy Ship Destroyed:  Attack or Retreat");
+    if (response === "retreat"){
+      alert("Return to base and regroup.  Game Over");
+      break;
+    } else if (response === "attack") {
+      console.log("Continue Playing");
+      // remove the alien ship we just destroyed from the array.
+      console.log(`Before removing destroyed ship: ${enemies}`);
+      enemies.shift(); 
+      console.log(`After removing destroyed ship: ${enemies}`);
+      // console.log(enemies);
+      // check if player has won the game.
+
+    }
+  } else {
+    // Enemy now has a turn to attack.
+    enemies[0].attack();
+  }
 }
+console.log("Game Over!  Thanks for playing");
+
+  
