@@ -22,10 +22,19 @@ checkIsDestroyed: function() {
 
     },
 
+    attack: alienShip => {
+            console.log("Starfleet is attacking");
+            if (Math.random() < this.accuracy){
+                console.log("Starfleet got a hit!");
+                alienShip.hull -= this.firepower;
+            } else {
+                console.log("Darn, Starfleet missed");
+            }
+    }
     
-}
+};
 
-console.log(ussSchwarzenegger);
+
 
 // Define AlienShip class
 // need to recalculate hull strength after each hit.
@@ -33,10 +42,10 @@ console.log(ussSchwarzenegger);
 
 class AlienShip{
     name = "bad guy";
-    constructor (hull, firepower, accuracy){
-        this.hull = hull;
-        this.firepower = firepower;
-        this.accuracy = accuracy;
+    constructor (){
+        this.hull = Math.floor(Math.random() * 4) + 3;
+        this.firepower = Math.floor(Math.random() * 3) + 2;
+        this.accuracy = (Math.floor(Math.random() * 3) + 6) / 10;
         this.isDestroyed = false;
     }
     
@@ -57,102 +66,45 @@ class AlienShip{
         }
     }
 
+    attack() {
+        console.log("Alien Ship attacking");
+        // Check for hit or miss:
+        if (Math.random() < this.accuracy) {
+          console.log("Alien ship scored a hit!");
+          playerShip.hull -= this.firepower;
+          console.log(`Good Guys remaning hull strength: ${playerShip.hull}`);
+        } else {
+          console.log("Alien ship missed");
+        }
+      }
     
 }
+
+console.log(ussSchwarzenegger);
 console.log(AlienShip);
 
-// Create game object
+/** Welcome player to the game
+ * General Instructions given
+ * mobilize the alienFleet.
+ */
 
-// Start the Game
-// Prompt user for their name.
-// Perhaps some general directions on how play works
-// ask them if they wish to play.
-// IF YES, then start.
-// create alien ships
+//  capture player's response after each salvo.
+let playerChoice = null;
 
-alert("Welcome to Space Battle.");
-// let userWantsToPlay = prompt("would you like to play?");
-
-// let firstAlienShip = new AlienShip(3, 2, .6);
-
-let firstAlienShip = new AlienShip(6, 4, .8);
-
-// Turn by turn logic
-// ship initiates attack
-// determine if attack was successful by comparing attacker accuracy with the random number generated.
-// if attackerAccuracy > random Number that is a HIT => the game tracks hits and misses
-// individual ships decrement their hull strength accordingly.
-// confirm target's hull strength is still above zero.
-// confirm game should continue.
-
-// if attackerAccuracy < random number ==> MISS
-// target becomes the attacker
-// game continues 
-// BACK TO "ship initiates attack" step to repeat the loop.
-
-// We always begin with the Aliens on the offensive.
-// this looks like a beginGame function.
-
-let numBadGuys = 1;
-let currAttacker = firstAlienShip;
-let currTarget = ussSchwarzenegger;
-let isTargetDistroyed = false;
-let currShotAccuracy = 0;
-let goodGuyDestroyed = false;
-let allBadGuysDestroyed = false;
-let numBadGuysDestroyed = 0;
+  // this will hold all the ships of the alien fleet.
+ let alienFleet = [];
+ let alienShip = new AlienShip();
 
 
-// while all players still have hull strength, keep playing.
-// this looks like the beginning of a playGame function.
+// start the game here.  Our team fires the first salvo.  Ask if they wish to continue.
 
-while ( goodGuyDestroyed === false && numBadGuysDestroyed < numBadGuys ){
-    
-    console.log(`Current Target = ${currTarget.name}`);
-    console.log(`Current Attacker = ${currAttacker.name}`);
+ussSchwarzenegger.attack(alienShip);
 
-    currShotAccuracy = Math.random(); 
-    console.log(`Current Shot: ${currShotAccuracy}`);
-
-    if (currShotAccuracy <= currAttacker.accuracy) {
-        console.log(`Direct Hit on ${currTarget.name}`);
-        currTarget.calcHullStrength(currAttacker.firepower);
-        console.log(`Hull Strength down to ${currTarget.hull}`);
-        isTargetDistroyed = currTarget.checkIsDestroyed();
-
-        // there's only one good guy so if it gets destroyed, game is over.
-        // if a bad guy gets destroyed, game continues.
-
-        if (isTargetDistroyed){
-            console.log(`Target: ${currTarget.name} has been destroyed`);
-            if (currTarget.name === "good guy"){
-                goodGuyDestroyed = true;
-            } else {
-                    numBadGuysDestroyed+= 1;
-                    
-            }
-        }
-        
-    } else {
-        console.log("Dodged a bullet!");
+if (alienShip.hull < 0){
+    // console.log("Alien attacker has been destroyed");
+    playerChoice = prompt("Alien attacker has been destroyed.  Attack or Retreat?");
+    if (playerChoice === "Retreat"){
+        console.log("Return to homebase and regroup.");
+        // break;
     }
-
-// switch attackers then go back and do it all again.
-
-tempTarget = currAttacker;
-currAttacker = currTarget;
-currTarget = tempTarget;
-
-
 }
-
-// Battle
-// if (Math.random() < alien[0].accuracy) {
-// 	console.log('You have been hit!');
-// }
-
-// When one ship attacks another, need to know which ship is the attacker, which ship is the target and calculate the hit.
-
-// Retreat option
-
-// End game logic
