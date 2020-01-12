@@ -21,7 +21,12 @@ let playerShip = {
     console.log(enemyShip);
     // if (Math.random() < alien[0].accuracy) {
     // console.log('You have been hit!');
+  },
+
+  reinforceShields: () => {
+    this.hull += Math.floor(Math.random() * 7);
   }
+
 };
 
 
@@ -115,6 +120,10 @@ let playerShip = {
     }
   } else {
     // Enemy now has a turn to attack.
+    console.log("Aliens are charging their weapons.  Brace for attack");
+    // reinforcing shields in anticipation of the next attack.
+    playerShip.reinforceShields();
+    console.log(`Hull integrity now at ${playerShip.hull}`);
     enemies[0].attack();
   }
 }
