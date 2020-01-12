@@ -186,3 +186,5 @@ timmy.exercise();
 timmy.exercise();
 
 timmy.getPersonStats();
+
+
