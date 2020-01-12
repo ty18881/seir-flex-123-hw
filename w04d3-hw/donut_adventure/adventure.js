@@ -10,7 +10,7 @@ class Hero {
     }
 
     talkSass = () => {
-        return this.catchphrases[Math.floor(Math.random()*3 +1)];
+         console.log(this.catchphrases[Math.floor(Math.random()*2)]);
     }
 
     announceHealth = () => console.log(`Current Health: ${this.health}`);
@@ -30,7 +30,7 @@ class Enemy {
     }
 
     talkSmack = () => {
-        return this.catchphrases[Math.floor(Math.random()*3 +1)];
+         console.log(this.catchphrases[Math.floor(Math.random()*2)]);
     }
 
     announceHealth = () => console.log(`Current Health: ${this.health}`);
@@ -43,3 +43,17 @@ console.log(dougie);
 
 let pizzaRat = new Enemy("Pizza Rat");
 console.log(pizzaRat);
+
+// our protagonists have their first confrontation
+
+const warOfWords = () => {
+    dougie.talkSass();
+
+    pizzaRat.talkSmack();
+
+    dougie.announceHealth();
+
+    pizzaRat.announceHealth();
+}
+
+warOfWords();
