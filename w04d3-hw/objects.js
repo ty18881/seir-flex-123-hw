@@ -13,6 +13,12 @@ class Hamster {
         return this.price;
     }
 
+    printStats = () => {
+        console.log(`Name: ${this.name}`);
+        console.log(`Owner: ${this.owner}`);
+        console.log(`Price: ${this.price}`);
+        
+    }
 
 }
 
@@ -25,6 +31,7 @@ class Person {
         this.name = name;
         this.age = 0;
         this.weight = 0;
+        this.height = 0;
         this.mood = 0;
         this.hamsters = [];
         this.bankAccount = 0;
@@ -65,6 +72,16 @@ class Person {
         this.bankAccount =- hamster.getPrice();
         this.hamsters.push(hamster);
     }
+
+    getPersonStats = () => {
+        console.log(`Name: ${this.name}`);
+        console.log(`Age: ${this.age}`);
+        console.log(`Weight: ${this.weight}`);
+        console.log(`Height: ${this.height}`);
+        console.log(`Mood: ${this.mood}`);
+        console.log(`Bank Account: ${this.bankAccount}`);
+        console.log(`Number of Hamsters: ${this.hamsters.length}`);
+    }
 }
 
 // testing the new Person class out
@@ -95,3 +112,77 @@ taraYoung.buyHamster(myHamster);
 
 console.log(`I have a new pet:  ${taraYoung.hamsters[0].name}`);
 
+/**Creating Timmy's Story */
+
+//1.  new person Timmy.
+
+let timmy = new Person("Timmy");
+
+// 2.  Age Timmy by five years
+
+timmy.ageUp();
+
+console.log(`Timmy's Current Age: ${timmy.getAge()}`);
+
+// 3.  Timmy's bummed so he eats five times.
+for (let i =0; i<5; i++){
+    timmy.eat();
+}
+
+timmy.getPersonStats();
+
+// 4.  Timmy exercises five times.
+
+for (let i =0; i<5; i++){
+    timmy.exercise();
+}
+
+timmy.getPersonStats();
+
+// 5.  Age Timmy by nine years
+
+for (let i =0; i<9; i++){
+    timmy.ageUp();
+}
+
+timmy.getPersonStats();
+
+// 6.  Create a hamster names Gus
+
+let gus = new Hamster("Gus");
+
+gus.printStats();
+
+// 7.  Set Gus' owner to Timmy
+
+gus.owner ="Timmy";
+
+gus.printStats();
+
+// 8.  Have Timmy buy Gus
+
+timmy.buyHamster(gus);
+
+timmy.getPersonStats();
+
+// 9.  Age Timmy by 15 Years
+
+for (let i =0; i<15; i++){
+    timmy.ageUp();
+}
+
+timmy.getPersonStats();
+
+// 10.  Have Timmy eat twice
+
+timmy.eat();
+timmy.eat();
+
+timmy.getPersonStats();
+
+// 11.  Have Timmy exercise twice.
+
+timmy.exercise();
+timmy.exercise();
+
+timmy.getPersonStats();
