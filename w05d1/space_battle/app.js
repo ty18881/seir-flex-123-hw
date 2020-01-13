@@ -27,33 +27,8 @@ let playerShip = {
     playerShip.hull += Math.floor(Math.random() * 7);
     console.log(`New Shield value: ${playerShip.hull}`);
   },
-  // use this method to select the alien ship with accuracy lower than ours as our next target.
   
-  selectTarget: enemies => {
-
-    let targetedEnemy = 0; // index of the enemy with lowest hull strength.
-
-    let hullMax = 6; // we know this from the requirements specification.
-
-    // chose standard for loop because I need the retain the index of the enemy ship.
-    
-
-   for (let index = 0; index < enemies.length; index++) {
-    
-    
-      if (enemies[index].hull < hullMax) {
-       console.log(`Found one with lower hull strength: Ship Number: ${index} Hull: ${enemies[index].hull}`);
-       targetedEnemy = index;
-       hullMax = enemies[index].hull;  // now set this to the max value because we want the one with the lowest.
-     } 
-    
-   }
-
-    //  return the index of the enemy we want to target for the attack to the calling function.
   
-  console.log(`Ship #: ${targetedEnemy} Enemy Accuracy: ${enemies[targetedEnemy].hull} My Accuracy: ${playerShip.hull}`);
-   return targetedEnemy; 
-  }
 
 };
 
@@ -114,6 +89,7 @@ let playerShip = {
   console.log(enemies);
 
   let targetedEnemy = 0; 
+  let userInput = "0";
   
   // while (gameState.playerIsAlive()) {
 
@@ -124,9 +100,21 @@ let playerShip = {
   // BONUS 2:  Select specific enemy ship to target for attack
 
     
-    targetedEnemy = playerShip.selectTarget(enemies);
+    // targetedEnemy = playerShip.selectTarget(enemies);
+    userInput = prompt(`You have ${enemies.length} to attack.  Which one do you want to target for attack? Choose a number between 0 and ${enemies.length-1}`, "0");
 
-    // console.log(`Targeting ship number ${targetedEnemy} for our next attack`);
+    console.log(`User Input: ${userInput}`);
+    
+
+    // if the input can be parsed to a number and it is in range, then use that for the enemy target.
+    if (!isNaN(parseInt(userInput)) && parseInt(userInput) >= 0 && (parseInt(userInput) < enemies.length) ) { 
+        targetedEnemy = parseInt(userInput);
+
+    } else { // else just select the first item in the enemies list.
+      targetedEnemy = 0;
+    }
+
+    console.log(`Targeting ship number ${targetedEnemy} for our next attack`);
 
     playerShip.attack(enemies[targetedEnemy]);
 
