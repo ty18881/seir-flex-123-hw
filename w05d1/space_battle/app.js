@@ -12,19 +12,47 @@ let playerShip = {
   attack: enemyShip => {
     console.log("Player attacking Alien ship");
     // Check for hit success based on playerShip accuracy:
-    if (Math.random() < playerShip.accuracy) {
+    if (Math.random() < playerShip.accuracy) {     
       console.log("Attack hit!");
       enemyShip.hull -= playerShip.firepower;
     } else {
       console.log("Attack missed!");
     }
     console.log(enemyShip);
-    // if (Math.random() < alien[0].accuracy) {
-    // console.log('You have been hit!');
+    
   },
 
   reinforceShields: () => {
-    this.hull += Math.floor(Math.random() * 7);
+    console.log(`Current Shield Value: ${playerShip.hull}`);
+    playerShip.hull += Math.floor(Math.random() * 7);
+    console.log(`New Shield value: ${playerShip.hull}`);
+  },
+  // use this method to select the alien ship with accuracy lower than ours as our next target.
+  
+  selectTarget: enemies => {
+
+    let targetedEnemy = 0; // index of the enemy with lowest hull strength.
+
+    let hullMax = 6; // we know this from the requirements specification.
+
+    // chose standard for loop because I need the retain the index of the enemy ship.
+    
+
+   for (let index = 0; index < enemies.length; index++) {
+    
+    
+      if (enemies[index].hull < hullMax) {
+       console.log(`Found one with lower hull strength: Ship Number: ${index} Hull: ${enemies[index].hull}`);
+       targetedEnemy = index;
+       hullMax = enemies[index].hull;  // now set this to the max value because we want the one with the lowest.
+     } 
+    
+   }
+
+    //  return the index of the enemy we want to target for the attack to the calling function.
+  
+  console.log(`Ship #: ${targetedEnemy} Enemy Accuracy: ${enemies[targetedEnemy].hull} My Accuracy: ${playerShip.hull}`);
+   return targetedEnemy; 
   }
 
 };
@@ -74,15 +102,18 @@ let playerShip = {
 
   
   // developing a fleet of alien ships
-  // random number of ships have been sent to attack.
+  // BONUS 1:  random number of ships have been sent to attack.
   // want to make sure we have at least two ships.
 
   let numEnemies = Math.floor(Math.random() * 30 +2);
+  // let numEnemies = 6;
   enemies = [];
   for (let i = 0; i < numEnemies; i++) {
     enemies.push(new AlienShip());
   }
   console.log(enemies);
+
+  let targetedEnemy = 0; 
   
   // while (gameState.playerIsAlive()) {
 
@@ -90,16 +121,18 @@ let playerShip = {
  while (gameState.playerIsAlive() && !gameState.checkWin()) {
   
   
-  // attack the first ship in the alien fleet.
+  // BONUS 2:  Select specific enemy ship to target for attack
 
-  //PROBLEM (I think):  if we reach this point after we destroy a ship, we end up attacking the same alien ship twice in a row.
-  // if we miss after destroying the previous ship, we skip one of the enemy's turns to attack.
+    
+    targetedEnemy = playerShip.selectTarget(enemies);
 
-    playerShip.attack(enemies[0]);
+    // console.log(`Targeting ship number ${targetedEnemy} for our next attack`);
+
+    playerShip.attack(enemies[targetedEnemy]);
 
   // check if the enemy has been destroyed.
 
-  if (enemies[0].hull <= 0){
+  if (enemies[targetedEnemy].hull <= 0){
     console.log("enemy has been destroyed");
 
     //prompt fighter to continue or retreat.
@@ -112,7 +145,12 @@ let playerShip = {
       console.log("Continue Playing");
       // remove the alien ship we just destroyed from the array.
       console.log(`Before removing destroyed ship: ${enemies}`);
-      enemies.shift(); 
+
+      // enemies.shift(); 
+
+      // If the attack was successful, we want to remove the item that we targeted for the attack.
+
+      enemies.splice(targetedEnemy,1);
       console.log(`After removing destroyed ship: ${enemies}`);
       // console.log(enemies);
       // check if player has won the game.
@@ -121,7 +159,8 @@ let playerShip = {
   } else {
     // Enemy now has a turn to attack.
     console.log("Aliens are charging their weapons.  Brace for attack");
-    // reinforcing shields in anticipation of the next attack.
+
+    // BONUS 3:  reinforcing shields in anticipation of the next attack.
     playerShip.reinforceShields();
     console.log(`Hull integrity now at ${playerShip.hull}`);
     enemies[0].attack();
