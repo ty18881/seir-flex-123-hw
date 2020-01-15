@@ -8,6 +8,8 @@ let playerShip = {
   hull: 20,
   firepower: 5,
   accuracy: 0.7,
+  // Adding missles
+  missles: ["tube 1", "tube 2", "tube 3"],
   // Add methods for battle here
   attack: enemyShip => {
     console.log("Player attacking Alien ship");
@@ -72,9 +74,6 @@ let playerShip = {
   
   // Start the game
   console.log("Generating enemy ships");
-  // enemy = new AlienShip();
-  // console.log(enemy);
-
   
   // developing a fleet of alien ships
   // BONUS 1:  random number of ships have been sent to attack.
@@ -100,7 +99,7 @@ let playerShip = {
   // BONUS 2:  Select specific enemy ship to target for attack
 
     
-    // targetedEnemy = playerShip.selectTarget(enemies);
+    
     userInput = prompt(`You have ${enemies.length} to attack.  Which one do you want to target for attack? Choose a number between 0 and ${enemies.length-1}`, "0");
 
     console.log(`User Input: ${userInput}`);
@@ -151,7 +150,19 @@ let playerShip = {
     // BONUS 3:  reinforcing shields in anticipation of the next attack.
     playerShip.reinforceShields();
     console.log(`Hull integrity now at ${playerShip.hull}`);
+
+    console.log(`First Enemy Attack in the sequence`);
     enemies[0].attack();
+
+// BONUS 5:  Aliens send more than one ship at a time to attack.  Not sure if this is a good candidate for a callback function???
+// for this, I'm going to assume two ships attack at a time, one after another.  Only do this if we have more than one enemy ship remaining.
+// another variation is to have all the enemies attack at the same time but I'm not sure how to make that work.
+    
+    if (enemies.length > 1){
+      playerShip.reinforceShields();
+      console.log(`Second Enemy Attack in the sequence`);
+      enemies[1].attack();
+    }
   }
 }
 
