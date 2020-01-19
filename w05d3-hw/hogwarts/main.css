@@ -1,8 +1,17 @@
 body {
-    background-color: indigo;
+    background-color: aqua;
     text-align: center;
 }
 
 .cat {
     font-family: fantasy;
+}
+
+ul {
+    list-style: none;
+    /* removes the bullet points from our list of trunk items */
+}
+
+.secret {
+    opacity: 0.5;
 }

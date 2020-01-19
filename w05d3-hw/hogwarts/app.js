@@ -1,15 +1,49 @@
 
+const myStuff = ["butter beer", "invisibility cloak", "magic map", "time turner", "leash","Bertie Bott's Every Flavor [Jelly] Beans"];
+
+
+
+
+
   $(() => {
-/** YEAR 1:  Creating an H1 element on the page */
 
-let $container = $("#container");
-console.log($container);
+    // when I had this function outside of this block, i got 
+    // unknown reference when the $ul.append statment attempted to execute.
+    // we learned why in class but I promptly forgot the reason. 
 
-let $h1 = $("<h1>").text("Hogwarts");
+    const addToTrunk = (element) => {
+        // create new list item from the array 
+        let $li = $("<li>").text(element);
+    
+        // add class to the secret elements {cloak, map, time turner}
+    
+        switch (element) {
+            case "invisibility cloak":
+            case "magic map":
+            case "time turner":
+                $li.addClass("secret");
+                break;
+            case "leash":
+                $li.addClass("cat");
+                break;
+            default:  // how to i specify nothing?  can i just leave it blank?
+        }
+    
+        // append the $li to the existing $ul
+        
+        $ul.append($li);
+    }
 
-console.log($h1);
+    /** YEAR 1:  Creating an H1 element on the page */
 
-// append the h1 to the original so it shows up.
+    let $container = $("#container");
+    console.log($container);
+
+    let $h1 = $("<h1>").text("Hogwarts");
+
+    console.log($h1);
+
+    // append the h1 to the original so it shows up.
 
     $container.append($h1);
 
@@ -23,4 +57,17 @@ console.log($h1);
     let $wand = $("<h4>").text("Birch Wand with Phoenix Feather Core");
 
     $container.append($name, $house, $petName, $wand);
+
+    /** YEAR 3:  Add trunk with items */
+
+    let $ul = $("<ul>").attr("storage", "trunk");
+
+    // adding items to the list
+    // attempting to use a callback function with Array.forEach()
+
+    myStuff.forEach(addToTrunk);
+
+    $container.append($ul);
+
+
   });
