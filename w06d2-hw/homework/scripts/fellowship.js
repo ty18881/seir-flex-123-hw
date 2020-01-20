@@ -240,7 +240,7 @@ const beautifulStranger = () => {
   // 1. change the buddy 'Strider' textnode to "Aragorn"
      // hint: You can get a list of elements by tag name, such as 'aside'
 
-     // pull child of the aside tag.
+     // pull child of the aside tag. Below works because it only has one child.
 
      let $theBuddies = $("aside").children();
 
@@ -253,8 +253,6 @@ const beautifulStranger = () => {
      
 });
      
-
-
 };
 
 // COMMIT YOUR WORK
@@ -267,11 +265,25 @@ const forgeTheFellowShip = () => {
 
   // 1. create a new div with an id 'the-fellowship'
 
+  let $theFellowship = $("<div>").attr("id","the-fellowship");
+
   // 2. add an h1 with the text 'The Fellowship' to this new div
 
+  let $h1 = $("<h1>").text("The Fellowship");
+
+  $theFellowship.append($h1);
+
   // 3. append the fellowship to middle-earth
+ 
+    $("#middle-earth").append($theFellowship);
 
   // 4. add the unordered lists of hobbits and buddies to 'the-fellowship'
+  // assuming we just add them here and don't move them from their other locations....
+  // assuming we keep them in their separate lists as well.
+
+  $("#the-fellowship").append($("#Rivendell").children("ul"));
+
+  $("#the-fellowship").append($("aside").children("ul"));
 
 };
 
