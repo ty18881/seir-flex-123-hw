@@ -301,6 +301,8 @@ const theBalrog = () => {
   // 2. add a class "the-white" to this element
   // iterate through the list, find Gandalf and replace the text.
 
+  // the below works because i can pinpoint the list i'm looking for with just the class name.
+  // if there were no classes, i'd need to iterate through the children.  Still need to figure that out for future reference.
       $(".buddy").each( function() {
         if ( $(this).text() == "Gandalf the Grey") {
           $(this).text("Gandalf the White");
@@ -322,11 +324,32 @@ const theBalrog = () => {
 const hornOfGondor = () => {
 
   // 1. create a pop-up alert that the horn of gondor has been blown
+  // assuming the alert should come when the button is pressed and this function is called??
+
+    alert("Attention, Attention:  Horn of Gondor has been blown!");
 
   // 2. Boromir's been killed by the Uruk-hai! Put a linethrough on Boromir's name
+  // find Boromir's name in the list, call css to strikethrough the name.
+    $(".buddy").each( function() {
+      if ( $(this).text() == "Boromir") {
+        $(this).css("text-decoration", "line-through");
+        
+      }
+    
+    });
 
   // 3. Tricky: Remove the Uruk-Hai from the Baddies on the page
+  // so i'm going to pull the elements with baddy class name.
+  // will this throw off the iteration??? Not sure.
 
+  $(".baddy").each( function() {
+    if ( $(this).text() == "The Uruk-hai") {
+      $(this).remove();
+      
+    }
+  
+  });
+    
 };
 
 // COMMIT YOUR WORK
