@@ -132,5 +132,49 @@ const tableHeaders = [ "Day", "Classes"];
 
     myClasses.forEach(buildSchedule);
 
+    /** YEAR 5:  Removing stuff from the DOM using jQuery.
+     * Replacing items previously removed from the DOM using jQuery
+     */
 
+     // Part 1:  Remove magic wand from the trunk.
+    // found this reference:  https://www.w3schools.com/jquery/jquery_ref_selectors.asp
+    // and found the below command.
+
+    $("h4:last").remove();
+
+    // Part 2:  Remove the butter beer from the list
+
+    // this is the first li element in the ul
+    // this works because there's only one UL in our document.
+
+    $("ul li:first").remove();
+
+    // Part 3:  Get a new wand and add after my pet in the document
+    // found this reference:  https://code.tutsplus.com/tutorials/20-helpful-jquery-methods-you-should-be-using--net-10521
+
+    $newWand = $("<h4>").text("Hawthorn Wand with Dragon Heartstring Core");
+
+    $("h4:first").after($newWand);
+
+    // Part 4:  Change the color of my new wand
+
+    $("h4:last").css("color", "red");
+
+    // Part 5:  Move my cat to another part of the document.
+    // how about we put him in the trunk??
+
+    // can we use the existing reference?  I don't want to have to build another cat when 
+    // he moves back to his original location.
+
+    $("h4.cat").remove();
+
+    $("ul").after($petName);
+
+
+    // Part 6:  Move my cat back to his original location
+    // this works because i still have my reference to the pet declared above.
+
+    $("h4.cat").remove();
+    $("h3").after($petName); 
+    
   });
