@@ -214,6 +214,19 @@ const leaveTheShire = () => {
 
   //Stretch: add an event handler/listener so that when you click on the `h1` The Shire, this function will be called (be sure to do it in the window.onload/document.ready function)
 
+  console.log("Leaving the Shire");
+
+  // pick up just the UL, not the H1 child of the Shire.
+  // either one of the below options works. First one is a bit brain bendy with the NOT in there.
+  // let $theHobbits = $("#The-Shire").children().not("h1");
+
+  let $theHobbits = $("#The-Shire").children("ul");
+
+  $("#Rivendell").append($theHobbits);
+
+ // want to only remove the hobbits, not the h1.
+
+  $("#The-Shire").remove("ul");
 };
 
 // COMMIT YOUR WORK
