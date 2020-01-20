@@ -176,5 +176,31 @@ const tableHeaders = [ "Day", "Classes"];
 
     $("h4.cat").remove();
     $("h3").after($petName); 
+
+
+    /** Year 6 - Hiding and Showing Elements in the document */
+
+    // Part 1:  Hide belongings with class of secret
+
+    $(".secret").hide("slow");
+
+    $(".secret").show();
+
+    // Part 2:  Hide with a delay
+
+    $(".secret").hide("slow").delay(2000);
+
+    // Part 3:  Show secrets with delay.
+    $(".secret").show("slow");
+
+    /** Part 4:  Accident! You transmogrified your pet's leash into half cabbage
+    * add the class cabbage to your pet's leash. Do not replace your pet's leash's original class. Your pet, which also has the same class, should remain unaffected
+    * add an attribute of color:CHARTREUSE; in your main.css for all elements that have a class of cabbage 
+    * */
+   
+    $("li.cat").addClass("cabbage");
     
+    // Part 5: remove the cabbage class from leash
+
+    $("li.cat").removeClass("cabbage");
   });
