@@ -120,6 +120,10 @@ const tableHeaders = [ "Day", "Classes"];
 
     // build table structure
 
+    let $scheduleTime = $("<h5>").text("Spring 2017");
+
+    $container.append($scheduleTime);
+
     let $table = $("<table>");
     let $headerRow = $("<tr>");
 
@@ -203,4 +207,43 @@ const tableHeaders = [ "Day", "Classes"];
     // Part 5: remove the cabbage class from leash
 
     $("li.cat").removeClass("cabbage");
+
+    /**
+     * Update your class schedule to read 'Fall 2018'
+    * Celebrate by buying more butter beer! Append a list item with the text 'Butter beer' as the first list item inside your unordered list with the value of trunk
+    * Whoops! You broke your trunk when you stood on it while singing karaoke. Get a new storage container for your stuff; 
+    * replace the unordered list's property of trunk with a new property of chest
+    * Add some CSS to your page. Feel free to experiment and make this page your own
+    * Take a screenshot of your page and add it to your homework folder
+     */
+
+     // Part 1:  Change to Fall 2018
+
+     $("h5").text("Fall 2018");
+
+     // Part 2:  add butter beer to the front of the unordered list
+
+     let $butterBeer = $("<li>").text("butter beer");
+     $butterBeer.insertBefore($("ul li:first"));
+
+     // Part 3:  Get a new storage container.  
+     // Change trunk to chest
+     
+     $("ul").attr("storage", "chest");
+
+     // Part 4:  Add some CSS to the page.
+     // how about a thumbnail photo or avatar?
+
+     // eat more girl scout cookies.  have this appear then disappear, then reappear
+
+     let $subliminalMessage = $("<h3>").text("Support your local Girl Scout:  Buy cookies NOW!").addClass("subliminalMessage").css("color", "green");
+
+    //  $container.append($subliminalMessage);
+
+        $subliminalMessage.insertBefore($("ul li:first"));
+
+    $(".subliminalMessage").fadeOut("slow");
+
+ 
+
   });
