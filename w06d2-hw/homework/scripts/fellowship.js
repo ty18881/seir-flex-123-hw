@@ -278,7 +278,7 @@ const forgeTheFellowShip = () => {
     $("#middle-earth").append($theFellowship);
 
   // 4. add the unordered lists of hobbits and buddies to 'the-fellowship'
-  // assuming we just add them here and don't move them from their other locations....
+  // assuming we relocate them under The Fellowship heading.  The directions didn't specify if they should also remain in their original spots
   // assuming we keep them in their separate lists as well.
 
   $("#the-fellowship").append($("#Rivendell").children("ul"));
