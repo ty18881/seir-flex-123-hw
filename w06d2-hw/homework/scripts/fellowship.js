@@ -240,6 +240,21 @@ const beautifulStranger = () => {
   // 1. change the buddy 'Strider' textnode to "Aragorn"
      // hint: You can get a list of elements by tag name, such as 'aside'
 
+     // pull child of the aside tag.
+
+     let $theBuddies = $("aside").children();
+
+     // iterate through to find Strider so he can be replaced.
+
+     $(".buddy").each( function() {
+       if ( $(this).text() == "Strider") {
+         $(this).text("Aragorn");
+       }
+     
+});
+     
+
+
 };
 
 // COMMIT YOUR WORK
