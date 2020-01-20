@@ -242,8 +242,6 @@ const beautifulStranger = () => {
 
      // pull child of the aside tag. Below works because it only has one child.
 
-     let $theBuddies = $("aside").children();
-
      // iterate through to find Strider so he can be replaced.
 
      $(".buddy").each( function() {
@@ -251,7 +249,7 @@ const beautifulStranger = () => {
          $(this).text("Aragorn");
        }
      
-});
+    });
      
 };
 
@@ -297,7 +295,19 @@ const theBalrog = () => {
 
   // 1. change the 'Gandalf' text to 'Gandalf the White'
 
+  // Retrieve the class to which Gandalf belongs.
+
+    // let $theFellows = $("#the-fellowship").children("ul");
   // 2. add a class "the-white" to this element
+  // iterate through the list, find Gandalf and replace the text.
+
+      $(".buddy").each( function() {
+        if ( $(this).text() == "Gandalf the Grey") {
+          $(this).text("Gandalf the White");
+          $(this).addClass("the-white");
+        }
+      
+    });
 
   // 3. in the style.css file, add a css rule to make elements of the class "the-white" have a white background and a grey border
 
