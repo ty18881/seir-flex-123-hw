@@ -340,7 +340,7 @@ const hornOfGondor = () => {
 
   // 3. Tricky: Remove the Uruk-Hai from the Baddies on the page
   // so i'm going to pull the elements with baddy class name.
-  // will this throw off the iteration??? Not sure.
+  // will deleting the node during the iteration cause a problem?
 
   $(".baddy").each( function() {
     if ( $(this).text() == "The Uruk-hai") {
@@ -362,7 +362,21 @@ const itsDangerousToGoAlone = () => {
 
   // 1. take Frodo and Sam out of the fellowship and move them to Mordor (they don't need to be inside a ul in Mordor)
 
+  $("#the-fellowship").children("ul").children().each( function() {
+    console.log($(this));
+    if ( $(this).text() === "Frodo Baggins" || $(this).text() === "Samwise \'Sam\' Gamgee") {
+      console.log("found Sam or Frodo");
+      $("#Mordor").append($(this));
+    }
+  
+ });
+
+
   // 2. add a div with an id of 'mount-doom' to Mordor
+
+    let $mtDoom = $("<div>").attr("id", "mount-doom");
+
+    $("#Mordor").append($mtDoom);
 
 };
 
