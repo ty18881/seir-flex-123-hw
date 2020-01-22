@@ -397,7 +397,7 @@ const weWantsIt = () => {
   // 2. Move the ring from Frodo and give it to Gollum
 
   $("#gollum").append($("#the-ring"));
-  
+
   // 3. Move Gollum into Mount Doom
   $("#mount-doom").append($newGollum);
 };
@@ -412,9 +412,27 @@ const thereAndBackAgain = () => {
 
   // 1. remove Gollum and the Ring from the DOM
 
-  // 2. remove all the baddies from the DOM
+    $("#gollum").remove();
+    $("#mount-doom").empty();
 
+  // 2. remove all the baddies from the DOM
+  // both of the below options remove the list items and leave the empty UL tags behind.
+
+  // Is there a way to remove the obsolete UL tags from under Mordor????
+  
+   // $(".baddy").remove();
+   $("li").remove(".baddy");
+
+   
   // 3. Move all the hobbits back to the shire
+
+  // create new UL under The Shire
+
+  let $newList = $("<ul>");
+  $("#The-Shire").append($newList);
+
+  // parachute all items with class hobbit into the new UL under The Shire.
+  $newList.append($(".hobbit"));
 
 };
 
