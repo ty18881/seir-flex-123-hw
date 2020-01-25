@@ -1,27 +1,46 @@
 console.log("Am I linked up properly?");
 
-// add the window onload code
+// capture the user input in an array.
+let toDoList = [];
+
+const printList = () => {
+    // keeping this simple.  Just empty the list and rewrite the whole thing
+    // when we add items.
+
+    console.log(`Printing out ${toDoList} to the screen`);
+
+    // this is wonky as hell.  i should check if a ul exists prior
+
+    $("#to-do-list").append("<ul>");
+    $("ul").empty(); 
+    
+
+    toDoList.forEach((item) => {
+        let $addMe = $("<li>").append(item).addClass("to-do-item").css("list-style", "none");
+        $("ul").append($addMe);
+    });
+}
+
+const addNewItem = (event) => {
+    // capture the input into a variable.
+  let inputValue = $("#input-box").val();
+  console.log("User Typed " + inputValue);
+
+  // push the value to our master list of stuff to do.
+
+        toDoList.push(inputValue);
+
+    // now call function to print the revised list to the screen
+
+    printList();
+  
+}
 
 $(() => {
 
-/**
- * User enters text in the box, then clicks add.
- * The text should appear in the left hand column under "Things to Do"
- * 
- */
-
- let $addButton = $("#submit");
- let newItem = "";
- const addNewItem = () => {
-      // capture the input into a variable.
-    newItem = $("#input-box").val();
-    console.log("User Typed " + newItem);
- }
-
- 
 
  // recognize when the "add" button has been clicked with an event listener.
 
- $addButton.on("click", addNewItem);
+ $("button").on("click", addNewItem);
 
 });
