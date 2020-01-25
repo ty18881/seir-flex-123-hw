@@ -9,11 +9,14 @@ const printList = () => {
 
     console.log(`Printing out ${toDoList} to the screen`);
 
-    // this is wonky as hell.  i should check if a ul exists prior
+    //this is wonky. check if array has more than one item 
+    // as a proxy for "create new UL if creating list for the first time."
 
-    $("#to-do-list").append("<ul>");
-    $("ul").empty(); 
-    
+    if (toDoList.length === 1){
+        $("#to-do-list").append("<ul>");
+    } else {
+        $("ul").empty();
+    }
 
     toDoList.forEach((item) => {
         let $addMe = $("<li>").append(item).addClass("to-do-item").css("list-style", "none");
