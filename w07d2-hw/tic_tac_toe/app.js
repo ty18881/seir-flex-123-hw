@@ -79,10 +79,10 @@ console.log("checking for a winner");
 
   // create the game reset button.  want it near the bottom of the screen but inside the 
   // flex container div
-      let $resetButton = $("<button>").attr("id","reset-button").text("Start new game");
+      // let $resetButton = $("<button>").attr("id","reset-button").text("Start new game");
       // $resetButton.on("click", init);
 
-      $boardContainer.append($resetButton);
+      // $boardContainer.append($resetButton);
   
    }
     
