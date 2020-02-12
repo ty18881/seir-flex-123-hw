@@ -73,6 +73,43 @@ app.get("/:numCans", (req, res) => {
     `);
 });
 
+
+/** HUNGRY FOR MORE:  Fibonacci */
+
+// need a couple of functions to make this work
+
+ const isPerfectSquare = (input) => {
+     // I had to truncate the decimal places or this would
+     // return true for every value passed.
+
+     let s = Math.trunc(Math.sqrt(input));
+     let theSquare = s*s;
+
+    return (s*s) === input;
+ }
+
+ 
+ const isFibonacci = (num) => {
+    // num is a Fibonacci if (5*num*num +4) || (5*num*num - 4)
+    // OR both are perfect squares.
+
+
+    return isPerfectSquare(5*num*num+4) || isPerfectSquare(5*num*num-4);
+ }
+
+ app.get("/fibonacci/:num", (req, res) => {
+    let inputNum = parseInt(req.params.num);
+    let confirm = "Very good. It is a Fibonacci";
+
+    let deny = "I can tell this is not a Fibonacci number";
+
+    let rtnMsg;
+
+    isFibonacci(inputNum) ? rtnMsg = confirm : rtnMsg = deny;
+
+    res.send(`${req.params.num} : ${rtnMsg}`);
+});
+
 app.listen(3000, () => {
     console.log("Server is listening on port 3000");
 });
