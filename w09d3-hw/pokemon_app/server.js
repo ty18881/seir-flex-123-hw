@@ -14,9 +14,9 @@ app.get("/", (req, res) => {
 });
 
 app.get("/pokemon", (req, res) => {
-    // res.render("./missions/index.ejs", {allMissions: marsMissions} );
+    res.render("index.ejs", {allPokemon: pokemon} );
 
-    res.send(pokemon);
+    // res.send(pokemon);
 });
 
 // LISTENER
