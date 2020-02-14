@@ -31,8 +31,9 @@ const returnURL = (req) => {
     
     let regularURL;
 
-    regularURL = `${url}/${remainingCans}`;
+    // regularURL = `${url}/${remainingCans}`;
 
+    regularURL = `/${remainingCans}`;
 
     remainingCans === -1 ? linkText="Restart Game" : linkText = "Take one down and pass it around";
 
