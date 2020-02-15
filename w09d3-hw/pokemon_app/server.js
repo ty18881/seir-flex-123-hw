@@ -7,6 +7,7 @@ const port = 3000;
 
 const pokemon = require("./models/pokemon.js");
 
+// INDEX Views
 app.get("/", (req, res) => {
     // res.render("./missions/index.ejs", {allMissions: marsMissions} );
 
@@ -16,8 +17,14 @@ app.get("/", (req, res) => {
 app.get("/pokemon", (req, res) => {
     res.render("index.ejs", {allPokemon: pokemon} );
 
-    // res.send(pokemon);
 });
+
+// SHOW Route
+app.get("/pokemon/:id", (req, res) => {
+    res.render("show.ejs", {pokemon: pokemon[req.params.id]} );
+
+});
+
 
 // LISTENER
 app.listen(port, ()=> {
