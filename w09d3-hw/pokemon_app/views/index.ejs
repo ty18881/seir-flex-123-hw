@@ -11,9 +11,21 @@
         body {
           color: blanchedalmond;
           background-color: steelblue;
-          
+        }
+        ul {
+            list-style-type: none;
         }
       </style>
     <h1>See all the Pokemon!</h1>
+      <ul>
+    <%  for (item in allPokemon) { %>
+      <% let itemName = allPokemon[item].name; %>
+      <% let inCaps = itemName.charAt(0).toUpperCase() + itemName.slice(1); %>
+
+        <li>
+            <%= inCaps %>
+        </li>
+   <% } %>
+    </ul>
 </body>
 </html>
