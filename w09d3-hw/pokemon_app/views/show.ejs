@@ -7,10 +7,12 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Pokemon Show Route</h1>
+    <h1>Gotta Catch 'Em All</h1>
     <% let inCaps = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1); %>
     <h2>Pokemon Name: <%=inCaps%></h2>
-    
-    <h2>Pokemon Id: <%=index%></h2>
+    <img src="<%=pokemon.img%>.jpg" alt="<%=inCaps%>">
+    <p>
+        <a href="/pokemon/">Back</a>
+    </p>
 </body>
 </html>
