@@ -18,12 +18,12 @@
       </style>
     <h1>See all the Pokemon!</h1>
       <ul>
-    <%  for (item in allPokemon) { %>
-      <% let itemName = allPokemon[item].name; %>
+    <%  for (let i=0; i< allPokemon.length; i++) { %>
+      <% let itemName = allPokemon[i].name; %>
       <% let inCaps = itemName.charAt(0).toUpperCase() + itemName.slice(1); %>
 
         <li>
-            <%= inCaps %>
+           <a href="/pokemon/<%=i%>"> <%= inCaps %></a>
         </li>
    <% } %>
     </ul>

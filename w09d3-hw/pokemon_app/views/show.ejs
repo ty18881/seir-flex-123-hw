@@ -8,6 +8,9 @@
 </head>
 <body>
     <h1>Pokemon Show Route</h1>
-    <h2>Pokemon Id: <%=pokemon.name%></h2>
+    <% let inCaps = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1); %>
+    <h2>Pokemon Name: <%=inCaps%></h2>
+    
+    <h2>Pokemon Id: <%=index%></h2>
 </body>
 </html>
