@@ -18,6 +18,11 @@ app.get("/budgets", (req, res) => {
     res.render("index.ejs", {spendingData: spendingData} );
 });
 
+// SHOW route
+app.get("/budgets/:id", (req, res) => {
+    res.render("show.ejs", {item: spendingData[req.params.id]} );
+});
+
 // Listener
 
 app.listen(port, () => {

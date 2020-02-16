@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css"> 
+    <title><%=item.name%> Detail</title>
+</head>
+<body>
+    <div class="container">
+        <h1><%=item.name%></h1>
+        <ul>
+            <li>Date: <%=item.date%></li>
+            <li>Name: <%=item.from%></li>
+            <div class="amt-class"><li>From: <%=item.amount%></li></div>
+            <li>Tags: <%=item.tags%></li>
+        </ul>
+        <a class="button button-primary" href="/budgets/">Back</a>
+    </div>
+</body>
+</html>
