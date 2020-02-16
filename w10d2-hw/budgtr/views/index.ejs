@@ -20,7 +20,7 @@
             <% for (let i=0; i< spendingData.length; i++) { %>
                 <tr>
                     <td><%=spendingData[i].date %></td>
-                    <td><%=spendingData[i].name %></td>
+                    <td> <a href="/budgets/<%=i%>"><%=spendingData[i].name %></a> </td>
                     <td><%=spendingData[i].amount %></td>
                 </tr>
             <% } %>
