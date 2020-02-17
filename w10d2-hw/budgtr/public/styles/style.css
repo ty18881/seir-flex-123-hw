@@ -1,3 +1,6 @@
 ul {
     list-style: none;
 }
+tr:nth-child(even) {background: rgb(181, 243, 196)}
+tr:nth-child(odd) {background: #FFF}
+

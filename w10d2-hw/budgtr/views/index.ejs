@@ -5,36 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+    <link rel="stylesheet" href="/styles/style.css">
     <title>Budgtr</title>
 </head>
 <body>
     <h1>Budgtr - Income and Outflow Tracker</h1>
     <a class="button button-primary" href="/budgets/new">Create New Item</a>
-    <div class="one column">
-        
-    </div>
+    
     <table class="u-full-width">
+        
         <thead>
-            <tr>
-                <th>Date</th>
-                <th>Name</th>
-                <th>Amount</th>
-            </tr>
+            
+                <tr>
+                    <th>Date</th> 
+                    <th>Name</th> 
+                    <th>Amount</th> 
+                </tr>
+            
         </thead>
+        
         <tbody>
             <% let runningBalance = 0; %>
             <% let balFont = "black"; %>
             <% for (let i=0; i< spendingData.length; i++) { %>
                 <tr>
                     <td><%=spendingData[i].date %></td>
-                    <td> <a href="/budgets/<%=i%>"><%=spendingData[i].name %></a> </td>
+                    <td><a href="/budgets/<%=i%>"><%=spendingData[i].name %></a></td>
                     <td><%=spendingData[i].amount %></td>
                     <% runningBalance = runningBalance + spendingData[i].amount; %>
                 </tr>
             <% } %>
         </tbody>
         <div class="running-balance">
-            <% runningBalance <= 0 ? balFont = "red" : balFont = "green" %>
+            <% runningBalance <= 0 ? balFont = "red" : balFont = "black" %>
+            <% runningBalance >= 1000 ? balFont = "green" : balFont = "black" %>
             <h4 style="color: <%=balFont%>;">Current Balance: $<%=runningBalance %></h4>
         </div>
     </table>

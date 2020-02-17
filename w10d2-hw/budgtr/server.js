@@ -15,7 +15,7 @@ app.use(express.json());
 
 // public resources if needed
 
-// app.use(express.static("public"));
+app.use(express.static("public"));
 
 // Data source
 
@@ -29,7 +29,7 @@ app.get("/budgets", (req, res) => {
 // NEW route - POST to capture and store the data from the NEW route
 app.post("/budgets", (req, res) => {
 
-    // console.log("request body: ", req.body);
+    
     console.log("request ", req.body);
 
     // standardize the data being pulled from the form.
