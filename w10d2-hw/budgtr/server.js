@@ -38,8 +38,11 @@ app.post("/budgets", (req, res) => {
     newSpending.name = req.body.name;
     newSpending.amount = parseInt(req.body.amount);
     
-    newSpending.tags = [];
-    newSpending.tags.push(req.body.tags);
+    
+    // newSpending.tags = [];
+    // if tags != null => split on , and push into tags array of the new object.
+    req.body.tags != null ? newSpending.tags = (req.body.tags).split(",") : newSpending.tags = [];
+    // newSpending.tags = (req.body.tags).split(",");
     
     newSpending.expense = req.body.expense;
     
