@@ -36,7 +36,7 @@ app.post("/budgets", (req, res) => {
     let newSpending ={};
     newSpending.date = req.body.date;
     newSpending.name = req.body.name;
-    newSpending.amount = req.body.amount;
+    newSpending.amount = parseInt(req.body.amount);
     
     newSpending.tags = [];
     newSpending.tags.push(req.body.tags);

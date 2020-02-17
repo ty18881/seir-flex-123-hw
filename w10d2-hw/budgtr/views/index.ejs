@@ -10,6 +10,9 @@
 <body>
     <h1>Budgtr - Income and Outflow Tracker</h1>
     <a class="button button-primary" href="/budgets/new">Create New Item</a>
+    <div class="one column">
+        
+    </div>
     <table class="u-full-width">
         <thead>
             <tr>
@@ -19,14 +22,21 @@
             </tr>
         </thead>
         <tbody>
+            <% let runningBalance = 0; %>
+            <% let balFont = "black"; %>
             <% for (let i=0; i< spendingData.length; i++) { %>
                 <tr>
                     <td><%=spendingData[i].date %></td>
                     <td> <a href="/budgets/<%=i%>"><%=spendingData[i].name %></a> </td>
                     <td><%=spendingData[i].amount %></td>
+                    <% runningBalance = runningBalance + spendingData[i].amount; %>
                 </tr>
             <% } %>
         </tbody>
+        <div class="running-balance">
+            <% runningBalance <= 0 ? balFont = "red" : balFont = "green" %>
+            <h4 style="color: <%=balFont%>;">Current Balance: $<%=runningBalance %></h4>
+        </div>
     </table>
 
     
