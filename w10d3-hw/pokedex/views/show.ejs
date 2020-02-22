@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon Detail</title>
+</head>
+<body>
+    <h1><%= pokemon.name %></h1>
+
+    <img src="<%=pokemon.img %>" alt="<%= pokemon.name %>" width="100" height="100">
+    <div class="type">
+        <%= pokemon.type %>
+    </div>
+    <div class="classification">
+        <%= pokemon.misc.classification %>
+        <%= pokemon.misc.height %>
+        <%= pokemon.misc.weight %>
+    </div>
+    <div class="stats">
+        
+        <%= pokemon.stats.hp %>
+        <%= pokemon.stats.attack %>
+        <%= pokemon.stats.defense %>
+        <%= pokemon.stats.spattack %>
+        <%= pokemon.stats.spdefense %>
+        <%= pokemon.stats.speed %>
+    </div>
+
+    <div class="abilities">
+        <%= pokemon.misc.abilities.normal %>
+        <%= pokemon.misc.abilities.hidden %>
+    </div>
+
+
+</body>
+</html>

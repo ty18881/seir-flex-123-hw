@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet the Remote Team</title>
+</head>
+<body>
+    <% for (let i=0; i < scientists.length; i++) { %>
+        <p>
+        <%= scientists[i].name %>
+        <%= scientists[i].description %>
+    </p>
+    <form action="/uncharted_planet/<%=i; %>?_method=DELETE" method="POST">
+        <input type="submit" value="DELETE" />
+    </form>
+    <% } %>
+    <form action="/uncharted_planet/?_method=DELETE" method="POST">
+        <input type="submit" value="DELETE ALL" />
+    </form>
+</body>
+</html>

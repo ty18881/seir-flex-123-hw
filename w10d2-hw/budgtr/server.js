@@ -37,16 +37,14 @@ app.post("/budgets", (req, res) => {
     newSpending.date = req.body.date;
     newSpending.name = req.body.name;
     newSpending.amount = parseInt(req.body.amount);
-    
-    
-    // newSpending.tags = [];
-    // if tags != null => split on , and push into tags array of the new object.
+        
+        // if tags != null => split on , and push into tags array of the new object.
     req.body.tags != null ? newSpending.tags = (req.body.tags).split(",") : newSpending.tags = [];
-    // newSpending.tags = (req.body.tags).split(",");
-    
+        
     newSpending.expense = req.body.expense;
     
     // if the item is an expense, set the amount to negative.
+    // this works because the amount is "cast" to a number when we subtract it from zero
     newSpending.expense == "yes" ? newSpending.amount = 0 - newSpending.amount : newSpending.amount;
     spendingData.push(newSpending);
     
@@ -67,9 +65,6 @@ app.get("/budgets/new", (req, res) => {
 app.get("/budgets/:id", (req, res) => {
     res.render("show.ejs", {item: spendingData[req.params.id]} );
 });
-
-
-
 
 
 // Listener

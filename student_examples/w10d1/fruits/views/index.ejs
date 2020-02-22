@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fruits Index</title>
+</head>
+<body>
+  <h1>Fruits Index Page</h1>
+  <% for (let i=0;i<fruits.length;i++) { %>
+  <p>
+    <a href="/fruits/<%= i %>">
+      <%= fruits[i].name %>
+    </a>
+    <form action="/fruits/<%= i %>?_method=DELETE" method="POST">
+      <input type="submit" value="Delete Fruit" />
+    </form>
+  </p>
+  <% } %>
+</body>
+</html>
