@@ -38,6 +38,39 @@ const pokemon = require('./models/pokemon.js');
  let maxReturned = 14;
 
  /**
+  * NEW route
+  */
+
+ app.get("/pokedex/new", (req, res) => {
+  res.render("new.ejs");
+});
+
+/**
+ * CREATE route
+ */
+
+app.post("/pokedex/", (req, res) => {
+
+  let numToAdd = parseInt(req.body.number);
+
+  // if adding more than one item, redirect to the index page.
+  // else redirect to the show page.
+  if ( numToAdd > 1){ // user specified more than one => go to index.
+    maxReturned = maxReturned + numToAdd;
+    res.redirect("/pokedex");
+  }
+  else if (numToAdd === 1) { // user specified exactly one => go to show
+    maxReturned = maxReturned +1;
+    res.redirect(`/pokedex/${maxReturned-1}`);
+  }
+  else { // user specified zero to add => go to index
+    res.redirect("/pokedex/")
+  }
+  
+});
+
+
+ /**
   * INDEX route
   */
 
