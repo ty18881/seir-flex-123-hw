@@ -55,6 +55,7 @@ app.post("/pokedex/", (req, res) => {
 
   // if adding more than one item, redirect to the index page.
   // else redirect to the show page.
+  // POTENTIAL ADD ON: - Highlight new items in a different color
   if ( numToAdd > 1){ // user specified more than one => go to index.
     maxReturned = maxReturned + numToAdd;
     res.redirect("/pokedex");
@@ -63,7 +64,7 @@ app.post("/pokedex/", (req, res) => {
     maxReturned = maxReturned +1;
     res.redirect(`/pokedex/${maxReturned-1}`);
   }
-  else { // user specified zero to add => go to index
+  else { // user specified zero or a negative number to add => go to index
     res.redirect("/pokedex/")
   }
   

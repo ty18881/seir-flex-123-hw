@@ -8,8 +8,10 @@
     <title>Pokedex</title>
 </head>
 <body>
-    <h1>Pokedex Index Page</h1>
+    <h1>Pick Your Pokemon!</h1>
+   
     <ul class="navigation">
+        
         <li>
             <a href="/pokedex/new">Add New Pokemon</a>
         </li>
@@ -20,7 +22,7 @@
               <% for (let i=0; i<max; i++) { %>
             <div class="item">
                 <a href="/pokedex/<%= i %>">
-                    <img src="<%= pokemon[i].img %>" alt="<%=pokemon[i].name %>" width="42" height="42">
+                    <img src="<%= pokemon[i].img %>" alt="<%=pokemon[i].name %>" width="45%" height="45%">
                 </a>
                 <div class="title">
                     <%= pokemon[i].name %>
