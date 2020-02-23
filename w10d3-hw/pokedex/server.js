@@ -37,6 +37,84 @@ const pokemon = require('./models/pokemon.js');
  // while we are developing the solution.
  let maxReturned = 14;
 
+/**
+ * EDIT route
+ */
+ 
+app.get("/pokedex/:id/edit", (req, res) => {
+  
+  let newIndex = parseInt(req.params.id, 10);
+
+  res.render("edit.ejs", {
+    // :id = pokemon.id NOT an easily castable array index.
+        pokemon: pokemon[newIndex],
+        index: req.params.id
+  });
+});
+
+/**
+ * UPDATE route
+ * id: "001",
+    name: "Bulbasaur",
+    img: "http://img.pokemondb.net/artwork/bulbasaur.jpg",
+    type: [
+      "Grass",
+      "Poison"
+    ],
+    stats: {
+      hp: "45",
+      attack: "49",
+      defense: "49",
+      spattack: "65",
+      spdefense: "65",
+      speed: "45"
+    },
+ *   misc: {
+      sex: {
+        male: "87.5",
+        female: "12.5"
+      },
+      abilities: {
+        normal: [
+          "Overgrow"
+        ],
+        hidden: [
+          "Chlorophyll"
+        ]
+      },
+      classification: "seed pokemon",
+      height: "2’04”",
+      weight: "15.2",
+      capturerate: "45",
+      eggsteps: "5120",
+      expgrowth: "1059860",
+      happiness: "70",
+      evpoints: [
+        "1 Sp. Attack Point(s)"
+      ],
+      fleeflag: "34",
+      entreeforestlevel: "10"
+    }
+ */
+
+app.put("/pokedex/:id", (req, res) => {
+  // capture the form parameters and save them into 
+  // their respective places 
+  // console.log(req.body);
+    pokemon[req.params.id].misc.classification = req.body.classification;
+    pokemon[req.params.id].misc.height = req.body.height;
+
+    pokemon[req.params.id].misc.weight = req.body.weight;
+    // type is an array.
+    
+    pokemon[req.params.id].type = req.body.type.split(",");
+    
+    pokemon[req.params.id].misc.abilities.normal = req.body.normal.split(",");
+    pokemon[req.params.id].misc.abilities.hidden = req.body.hidden.split(",");
+    res.redirect(`/pokedex/${req.params.id}`);
+    // res.redirect("/pokedex");
+});
+
  /**
   * NEW route
   */
@@ -83,7 +161,7 @@ app.post("/pokedex/", (req, res) => {
  * SHOW route
  */
 app.get("/pokedex/:id", (req, res) => {
-  res.render("show.ejs", { pokemon: pokemon[req.params.id] });
+  res.render("show.ejs", { pokemon: pokemon[req.params.id], index: req.params.id });
 });
 
   /**

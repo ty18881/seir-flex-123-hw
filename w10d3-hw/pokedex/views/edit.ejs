@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Lemonada&display=swap" rel="stylesheet">
+</head>
+<body>
+  <h1>Edit <%=pokemon.name %></h1>
+  <ul class="navigation">
+    <li>
+        <a href="/pokedex/<%=index%>">Back</a>
+    </li>
+    <li>
+        <a href="/pokedex">Home</a>
+    </li>
+    <li>
+        <a href="/pokedex">Cancel</a>
+    </li>
+</ul>
+  <form action="/pokedex/<%= index %>?_method=PUT" method="POST">
+    <!--  NOTE: the form is pre-populated with values for the server-->
+    Type: <input type="text" name="type" value="<%=pokemon.type%>" /><br />
+    Classification: <input type="text" name="classification" value="<%=pokemon.misc.classification%>" /><br />
+    Height: <input type="text" name="height" value="<%=pokemon.misc.height%>" /><br />
+    Weight: <input type="text" name="weight" value="<%=pokemon.misc.height%>" /><br />
+    Normal Abilities: <input type="text" name="normal" value="<%=pokemon.misc.abilities.normal%>" /><br />
+    Hidden Abilities: <input type="text" name="hidden" value="<%=pokemon.misc.abilities.hidden%>" /><br />
+    
+    <input type="submit" value="Update <%=pokemon.name%>">  
+
+</form>
+</body>
+</html>
