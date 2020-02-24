@@ -124,6 +124,16 @@ app.put("/pokedex/:id", (req, res) => {
 });
 
 /**
+ * DELETE Route
+ *
+ */
+
+app.delete("/pokedex/:id", (req, res) => {
+  pokemon.splice(req.params.id, 1); //remove the item from the array
+  res.redirect("/pokedex"); //redirect to index page
+});
+
+/**
  * CREATE route
  */
 
