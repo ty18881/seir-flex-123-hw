@@ -52,9 +52,11 @@
         
     </div>
 
-    <form action="/pokedex/<%= index %>?_method=DELETE" method="POST">
-        <input type="submit" value="DELETE <%=pokemon.name%>">
-    </form>
+    <div class="form">
+        <form action="/pokedex/<%= index %>?_method=DELETE" method="POST">
+            <input type="submit" value="DELETE <%=pokemon.name%>">
+        </form>
+    </div>
 </div>
 </body>
 </html>

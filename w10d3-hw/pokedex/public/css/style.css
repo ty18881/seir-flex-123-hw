@@ -39,7 +39,20 @@ body {
   background: #1565C0;
 }
 
+.item a {
+  text-decoration: none;
+}
 
+.form input {
+  border-radius: 8px;
+  background-color: deepskyblue;
+  font-family: inherit;
+  color: white;
+}
+
+.form input:hover {
+  background: #1565C0;
+}
 @media all and (max-width: 800px) {
   .navigation {
     justify-content: space-around;
