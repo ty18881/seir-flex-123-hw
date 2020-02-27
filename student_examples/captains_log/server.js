@@ -62,8 +62,15 @@ app.post('/logs/', (req, res)=>{
  */
 
  app.get("/logs", (req, res) => {
-    res.render("index.ejs");
+    Log.find( {}, (error, allLogs) => {
+        res.render("index.ejs", {
+            logs: allLogs
+        });
+    });
+    
  });
+
+ 
 /** LISTENER */
 app.listen(port, ()=>{
     console.log('listening');

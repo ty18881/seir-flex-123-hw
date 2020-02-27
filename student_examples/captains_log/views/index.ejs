@@ -7,6 +7,16 @@
 </head>
 <body>
     <h1>Captain's Log Entries</h1>
+
+    <ol>
+        <% for(let i = 0; i < logs.length; i++){ %>
+        <li>
+                    
+                        <%=logs[i].name; %>
+                    
+        </li>
+        <% } %>
+    </ol>
     
 </body>
 </html>
