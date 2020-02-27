@@ -48,6 +48,7 @@ body {
   background-color: deepskyblue;
   font-family: inherit;
   color: white;
+  float: right;
 }
 
 .form input:hover {
