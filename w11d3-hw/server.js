@@ -25,7 +25,19 @@ mongoose.connection.once('open', ()=> {
 const Product = require("./models/products.js");
 const seedData = require("./models/seed_products.js");
 
+/**
+ * SHOW Route
+ */
 
+ app.get("/products/:id", (req, res) => {
+    Product.findById(req.params.id, (err, foundProduct) => {
+        res.render("show.ejs", 
+        {
+            product: foundProduct
+        });
+    });
+ });
+ 
 /**
  * INDEX Route - show all products
  */
@@ -37,7 +49,7 @@ const seedData = require("./models/seed_products.js");
          });
      });
  });
- 
+
 
  /**
   * SEED route - add entries to the database
@@ -62,36 +74,7 @@ const seedData = require("./models/seed_products.js");
     });
  });
 
-//   app.get("/products/seed", (req,res) => {
-//       Product.create([
-//         {
-//             name: "Boogie Board",
-//             description: "Boogie Board",
-//             img: "placeHolder",
-//             price: 50,
-//             qty: 100
-//         },
-//         {
-//             name: "Beach Wheelchair",
-//             description: "Portable wheelchair suitable for beach use",
-//             img: "placeHolder",
-//             price: 150,
-//             qty: 75
-    
-//         },
-//         {
-//             name: "Beach Wagon",
-//             description: "Water-friendly wagon",
-//             img: "placeHolder",
-//             price: 25,
-//             qty: 500
-//         }
 
-//       ], (err, data) => {
-//         //   res.redirect("/products");
-//         res.send(data);
-//       });
-//   })
 
 /**
  * LISTENER
