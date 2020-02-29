@@ -39,6 +39,16 @@ const seedData = require("./models/seed_products.js");
  });
 
  /**
+  * DELETE Route - remove item from the datastore
+  */
+
+  app.delete("/products/:id", (req, res) =>{
+      Product.findByIdAndRemove(req.params.id, (err, prodData) =>{
+          res.redirect("/products");
+      });
+  });
+  
+ /**
   * UPDATE/EDIT  - Displays page where we can edit a product
   */
 
