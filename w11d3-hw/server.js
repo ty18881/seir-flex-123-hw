@@ -37,7 +37,33 @@ const seedData = require("./models/seed_products.js");
         });
     });
  });
- 
+
+ /**
+  * UPDATE/EDIT  - Displays page where we can edit a product
+  */
+
+  app.get("/products/:id/edit", (req, res) => {
+      Product.findById(req.params.id, (err, foundProduct) => {
+          res.render("edit.ejs", {
+              product: foundProduct
+          });
+      });
+  });
+
+  /**
+   * PUT Route - Store changes in the database.
+   */
+
+   app.put("/products/:id", (req, res) => {
+       Product.findByIdAndUpdate(
+           req.params.id,
+           req.body,
+           {new: true},
+           (err, updateModel) => {
+               res.redirect(`/products/${req.params.id}`);
+           }
+       )
+   })
 /**
  * INDEX Route - show all products
  */
