@@ -37,6 +37,7 @@ const seedData = require("./models/seed_products.js");
          });
      });
  });
+ 
 
  /**
   * SEED route - add entries to the database

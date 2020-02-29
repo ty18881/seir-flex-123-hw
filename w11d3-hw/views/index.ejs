@@ -7,6 +7,15 @@
 </head>
 <body>
     <h1>Product Inventory</h1>
+    <% for(let i = 0; i < prodList.length; i++){ %>
+        <li>
+            <%= prodList[i].name %>
+            <%= prodList[i].description %>
+            <%= prodList[i].img %>
+            <%= prodList[i].price %>
+            <%= prodList[i].qty %>
+        </li>
+          <% } %>
     
 </body>
 </html>
