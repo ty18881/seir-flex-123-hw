@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Log Entry</title>
+</head>
+<body>
+    <h1>Edit Log Entry: <%=logEntry.name%></h1>
+    <form action="/logs/<%=logEntry.id%>?_method=PUT" method="POST">
+        Name: <input type="text" name="name" value="<%=logEntry.name%>"/><br/>
+        Entry: <input type="textarea" name="entry" value="<%=logEntry.entry%>" /><br/>
+        
+            <input type="checkbox" name="isShipBroken" 
+                <% if (logEntry.isShipBroken === true) { %>
+                    checked
+                <% } %>
+            />
+            <label for="shipIsBroken"> Is Ship broken: check if YES</label><br/>
+        <input type="submit" name="" value="Update Entry"/>
+    </form>
+
+    
+</body>
+</html>

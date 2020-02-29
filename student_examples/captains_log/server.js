@@ -71,7 +71,48 @@ app.post('/logs/', (req, res)=>{
          res.redirect("/logs");
      });
  });
- 
+
+ /** 
+  * UPDATE/EDIT Route - display page to edit the log entry
+  */
+
+  app.get("/logs/:id/edit", (req, res) => {
+    Log.findById(req.params.id, (err, foundLog) => {
+        console.log(foundLog);
+        res.render("edit.ejs", {
+            logEntry: foundLog
+        });
+    });
+  });
+
+  /**
+   * PUT Route - Saves edits to the datastore
+   */
+
+   app.put("/logs/:id", (req, res) => {
+       // when we console.log req.body the shipIsBroken field does not
+       // appear in the output.
+       console.log(req.body);
+       console.log("After Edits on Screen", req.body.isShipBroken);
+       // when I unclick on the edit page, req.body.shipIsBroken returns undefined
+       if (req.body.isShipBroken === "on") {
+           req.body.isShipBroken = true;
+       } else {
+            req.body.isShipBroken = false;
+       }
+
+       // update the item in the database
+       // redirect to index upon successful update
+       Log.findByIdAndUpdate(
+           req.params.id,
+           req.body,
+           {new: true},
+           (err, updateModel) => {
+               res.redirect("/logs");
+           }
+
+       )
+   });
 /** SHOW route
  * 
  */
