@@ -26,6 +26,24 @@ const Product = require("./models/products.js");
 const seedData = require("./models/seed_products.js");
 
 /**
+ * NEW Route - display page where we enter data for new products
+ */
+
+ app.get("/products/new", (req, res) => {
+     res.render("new.ejs");
+ });
+
+ /**
+  * CREATE - store new item in the datastore
+  */
+
+  app.post("/products", (req, res) => {
+      Product.create(req.body, (error, result) => {
+          res.redirect("/products");
+      })
+  })
+
+/**
  * SHOW Route
  */
 
@@ -47,7 +65,7 @@ const seedData = require("./models/seed_products.js");
           res.redirect("/products");
       });
   });
-  
+
  /**
   * UPDATE/EDIT  - Displays page where we can edit a product
   */

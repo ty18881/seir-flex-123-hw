@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Product</title>
+</head>
+<body>
+    <h1>Add New Product Here</h1>
+    <form action="/products" method="POST">
+        Product Name: <input type="text" name="name"/> <br/>
+        Description: <input type="text" name="description"/> <br/>
+        Image: <input type="text" name="img"/> <br/>
+        Price: <input type="text" name="price" value="Must be Greater than Zero"/> <br/>
+        Quantity on Hand: <input type="text" name="qty" value="Must be a positive number"/> <br/>
+    
+        <input type="submit" name="" value="Create new product"/>
+    </form>
+</body>
+</html>
