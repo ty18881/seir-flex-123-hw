@@ -6,11 +6,13 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const methodOverride = require("method-override");
 
 const port = 3000;
 /** MIDDLEWARE */
 
 app.use(express.urlencoded({extended:true}));
+app.use(methodOverride("_method"));
 
 /** Database connectivity */
 mongoose.connect('mongodb://localhost:27017/basiccrud', { 
@@ -58,7 +60,18 @@ app.post('/logs/', (req, res)=>{
     });
 });
 
+/**
+ * DELETE route
+ */
 
+ app.delete("/logs/:id", (req, res) => {
+     console.log(req);
+     Log.findByIdAndRemove(req.params.id, (err,data) => {
+         // redirect to INDEX route upon successful deletion.
+         res.redirect("/logs");
+     });
+ });
+ 
 /** SHOW route
  * 
  */

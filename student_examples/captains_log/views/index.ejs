@@ -13,7 +13,10 @@
         <li>
                     
                        <a href="/logs/<%=logs[i].id%>"><%=logs[i].name %></a>
-                    
+            <form action="/logs/<%=logs[i].id%>?_method=DELETE" method="POST">
+                <input type="submit" value="Delete Entry" />
+
+            </form> 
         </li>
         <% } %>
     </ol>
