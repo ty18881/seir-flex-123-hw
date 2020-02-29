@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <h1>Captain's Log show page</h1>
+  <p>
+  Captain's Log <%=logEntry.name %> 
+</p>
+  <p>Stardate: <%= logEntry.createdAt%> </p>
+  
+  <p>
+  <% if(logEntry.isShipBroken === true){ %>
+  The ship is currently non-functional
+  <% } else { %>
+  The ship is functioning according to specifications.
+  <% } %>
+</p>
+  <nav>
+    <a href="/logs">Back to Log Entry Index</a>
+  </nav>
+</body>
+
+</html>

@@ -25,6 +25,7 @@ mongoose.connection.once('open', ()=> {
  */
 
 const Log = require('./models/logs.js');
+// const seedData = require("./models/seed_logs.js");
 
 /**
  * NEW Route
@@ -57,6 +58,18 @@ app.post('/logs/', (req, res)=>{
     });
 });
 
+
+/** SHOW route
+ * 
+ */
+app.get("/logs/:id", (req, res) => {
+    Log.findById(req.params.id, (err, foundLog) => {
+      res.render("show.ejs", {
+        logEntry: foundLog
+      });
+    });
+  });
+
 /**
  * INDEX Route
  */
@@ -70,7 +83,13 @@ app.post('/logs/', (req, res)=>{
     
  });
 
- 
+ /**
+  * SEED route - add a few log entries to the database
+  */
+
+//   app.get("/logs/seed", (req,res) => {
+//     Log.create
+//   });
 /** LISTENER */
 app.listen(port, ()=>{
     console.log('listening');
