@@ -25,6 +25,10 @@ mongoose.connection.once('open', ()=> {
 const Product = require("./models/products.js");
 const seedData = require("./models/seed_products.js");
 
+
+
+
+
 /**
  * NEW Route - display page where we enter data for new products
  */
@@ -61,10 +65,37 @@ const seedData = require("./models/seed_products.js");
   */
 
   app.delete("/products/:id", (req, res) =>{
+      console.log("Hitting the Delete route");
       Product.findByIdAndRemove(req.params.id, (err, prodData) =>{
           res.redirect("/products");
       });
   });
+
+  /**
+ * BUY Route - decrease quantity in inventory each time button is pressed
+ * 1.  update quantity in database
+ * 2. Display new quantity on screen.
+ * + if quantity == 0 => display OUT OF STOCK, remove BUY button
+ */
+
+ app.put("/products/:id/buy", (req,res) => {
+    console.log(`In the Update Quantity route: Body = ${req.body}`);
+    console.log(`ID: ${req.params.id}`);
+    // RECALL:  req.body is empty here.  
+    // so we cannot pull values from it to push a specific quantity 
+    // back into the database.
+        
+    Product.findByIdAndUpdate(
+        req.params.id,
+        // this increments the quantity by -1 which means we subtract one from it's value.
+        // not sure why they don't have $dec to decrement numbers.  Oh well.    
+        { $inc: {qty: -1}},
+        (error, result) => {
+            console.log(error);
+           res.redirect(`/products/${req.params.id}`);
+        }
+    )
+});
 
  /**
   * UPDATE/EDIT  - Displays page where we can edit a product
