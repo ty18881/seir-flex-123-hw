@@ -15,15 +15,25 @@
 <%= product.description %>
 <%= product.img %>
 <p>$ <%= product.price%> </p>
-<p>In Stock: <%=product.qty %></p>
-
+<% if (product.qty === 0) { %>
+    <p>OUT OF STOCK</p>
     <form action="/products/<%=product.id %>?_method=DELETE" method="POST">
         <input type="submit" name="" value="delete <%=product.name %>" />
     </form>
-    <form action="/products/<%=product.id%>/buy?_method=PUT" method="POST">
-        
-        <input type="submit" name="" value="Buy <%=product.name %>" />
-    </form>
+    <% } else { %>
+        <p>In Stock: <%=product.qty %></p>
+        <form action="/products/<%=product.id %>?_method=DELETE" method="POST">
+            <input type="submit" name="" value="delete <%=product.name %>" />
+        </form>
+
+        <form action="/products/<%=product.id%>/buy?_method=PUT" method="POST">
+            <input type="submit" name="" value="Buy <%=product.name %>" />
+        </form>
+    <% } %>
+
+
+    
+    
     
 </body>
 </html>
