@@ -31,6 +31,9 @@ const productsController = require("./controllers/products.js");
 // any request for fruits route get directed to the fruitsController.
 app.use("/products", productsController);
 
+// public sources
+app.use(express.static('public'));
+
 app.get("/", (req,res) => {
     res.redirect("/products");
   });
@@ -40,9 +43,9 @@ app.get("/", (req,res) => {
  * if you hit my server and the explicit route doesn't exist,
  * we'll take you to the INDEX route.
  */
-app.get("*", (req, res) => {
-  res.redirect("/fruits");
-});
+// app.get("*", (req, res) => {
+//   res.redirect("/fruits");
+// });
 
 /**
  * LISTENER

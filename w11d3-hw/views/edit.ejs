@@ -3,10 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Sarala&display=swap" rel="stylesheet">  
+    
+
     <title>Edit Product Screen</title>
 </head>
 <body>
-    <h1>Editing a Product</h1>
+    <div class="hero-image">
+        <div class="hero-text">
+            <h1>Edit <%= product.name %></h1>
+        </div>
+    </div>
+<br>
+    <ul class="navigation">
+        <li>
+            <a href="/products">Return to Product List</a>
+        </li>
+        <li>
+            <a href="/products">Discard Changes to <%= product.name %></a>
+        </li>
+        
+    </ul>
+    
     <form action="/products/<%=product.id%>?_method=PUT" method="POST">
         Product Name: <input type="text" name="name" value="<%=product.name%>"/> <br/>
         Description: <input type="text" name="description" value="<%=product.description%>"/> <br/>

@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const Product = require("../models/products.js");
+const seedData = require("../models/seed_products.js");
 
 /**
  * ROUTES go here
@@ -25,6 +26,22 @@ router.get("/new", (req, res) => {
          res.redirect("/products");
      })
  })
+
+ /**
+  * SEED ROUTE
+  */
+ router.get("/seed", (req,res) => {
+    Product.insertMany(seedData, (err, products) => {
+        if (err) { 
+            console.log(`Error Seeding the Database: ${err}`);
+        } else {
+            console.log("Added product data provided", products);
+            console.log(products);
+        }
+        res.redirect("/products");
+        
+    });
+ });
 
 /**
 * SHOW Route
@@ -126,17 +143,7 @@ router.get("/", (req, res) => {
 //   });
  */
 
-router.get("/seed", (req,res) => {
-   Product.insertMany(seedData, (err, products) => {
-       if (err) { 
-           console.log(err)
-       } else {
-           console.log("Added product data provided", products);
-           console.log(products);
-       }
-       
-   });
-});
+
 
 
 

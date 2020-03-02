@@ -3,14 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Sarala&display=swap" rel="stylesheet">  
+    
+
     <title>Display Product Page</title>
 </head>
 <body>
-    <h1><%= product.name %></h1>
-    <nav class="nav">
-        <a href="/products/<%=product.id %>/edit">Edit <%= product.name %></a>
-        <a href="/products">Return to Product List</a>
-    </nav>
+    <div class="hero-image">
+        <div class="hero-text">
+            <h1><%= product.name %></h1>
+        </div>
+    </div>
+<br>
+    <ul class="navigation">
+        <li>
+            <a href="/products">Return to Product List</a>
+        </li>
+        <li>
+            <a href="/products/<%=product.id %>/edit">Edit <%= product.name %></a>
+        </li>
+        
+        <li>
+            <a href="/products/new">Add a New Product</a>
+        </li>
+    </ul>
+
+    
+    
 <!-- Display Product Details here -->
 <%= product.description %>
 <%= product.img %>

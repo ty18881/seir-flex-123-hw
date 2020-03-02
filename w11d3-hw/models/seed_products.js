@@ -31,16 +31,29 @@ module.exports = [
     {
         name: "Beach Cart",
         description: "Aluminum CarryAll",
-        img: "https://2r2nvp1y1yej216bxs2s91n4-wpengine.netdna-ssl.com/wp-content/uploads/2015/07/thumbnail-9-680x680.jpg",
+        img: "https://oceanrentalsltd.com/wp-content/uploads/2014/04/img_7218-1-.jpg",
         price: 25,
         qty: 85
+    },
+    {
+        name: "Boogie Board",
+        description: "Boogie Board",
+        img: "https://2r2nvp1y1yej216bxs2s91n4-wpengine.netdna-ssl.com/wp-content/uploads/2014/04/img_72201-680x680.jpg",
+        price: 22,
+        qty: 62
+    },
+    {
+        name: "Beach Wheelchair",
+        description: "Beach Wheelchair",
+        img: "https://cdns.webareacontrol.com/prodimages/470-X-470/9/r/9420192624Debug-Beach-Wheelchair-P.png",
+        price: 75,
+        qty: 17
     }
 
 ]
-// beach cart: https://2r2nvp1y1yej216bxs2s91n4-wpengine.netdna-ssl.com/wp-content/uploads/2015/07/thumbnail-9-680x680.jpg
-// beach wheelchair:
-// boogie board: https://2r2nvp1y1yej216bxs2s91n4-wpengine.netdna-ssl.com/wp-content/uploads/2014/04/img_72201-680x680.jpg
-// beach bicycle: https://2r2nvp1y1yej216bxs2s91n4-wpengine.netdna-ssl.com/wp-content/uploads/2014/05/cruiser--680x453.jpg
+
+
+
 /**
  * const productSchema = new mongoose.Schema({
     name:  { type: String, required: true },
