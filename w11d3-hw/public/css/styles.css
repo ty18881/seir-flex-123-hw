@@ -89,6 +89,9 @@ body {
       height: 75%;
       position: relative;
     }
+    .column {
+        width: 100%;
+      }
   }
   
   div.item {
@@ -138,3 +141,29 @@ body {
     transform: translate(-50%, -50%);
     color: white;
   }
+
+  /* Create three equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 50%;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .button {
+    background-color: deepskyblue;
+    border: none;
+    color: white;
+    padding: 5px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 5%;
+  }
+  

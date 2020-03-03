@@ -29,11 +29,17 @@
         </li>
     </ul>
 
-    
-    
-<!-- Display Product Details here -->
+    <!-- some head room for the columns coming up -->
+    <br>
+<!-- image in the left hand column -->
+<div class="row">
+<div class="prod-img column left">
+    <img src="<%=product.img%>" alt="<%=product.name%>" height="40%" width="40%"/>
+</div>
+<!-- description and buttons in the right hand column -->
+<div class="column right">
 <%= product.description %>
-<%= product.img %>
+
 <p>$ <%= product.price%> </p>
 <% if (product.qty === 0) { %>
     <p>OUT OF STOCK</p>
@@ -43,15 +49,19 @@
     <% } else { %>
         <p>In Stock: <%=product.qty %></p>
         <form action="/products/<%=product.id %>?_method=DELETE" method="POST">
-            <input type="submit" name="" value="delete <%=product.name %>" />
+            
+            <input type="submit" class="button" name="" value="delete <%=product.name %>" />
+            
         </form>
-
+        <br>
         <form action="/products/<%=product.id%>/buy?_method=PUT" method="POST">
-            <input type="submit" name="" value="Buy <%=product.name %>" />
+            
+            <input type="submit" class="button" name="" value="Buy <%=product.name %>" />
+            
         </form>
     <% } %>
-
-
+</div>
+</div>
     
     
     
