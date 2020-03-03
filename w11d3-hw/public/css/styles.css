@@ -142,10 +142,22 @@ body {
     color: white;
   }
 
-  /* Create three equal columns that floats next to each other */
+  /* Create two equal columns that float next to each other */
 .column {
     float: left;
     width: 50%;
+  }
+
+  .col-25 {
+      float: left;
+      width: 25%;
+      margin-top: 6px;
+  }
+
+  .col-75 {
+      float: left;
+      width: 75%;
+      margin-top: 6px;
   }
   
   /* Clear floats after the columns */
@@ -165,5 +177,18 @@ body {
     display: inline-block;
     font-size: 12px;
     border-radius: 5%;
+  }
+
+  label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+  }
+
+  input[type=text], textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
   }
   

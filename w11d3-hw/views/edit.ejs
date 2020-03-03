@@ -25,15 +25,48 @@
         </li>
         
     </ul>
-    
+    <br>
+    <div class="container">
     <form action="/products/<%=product.id%>?_method=PUT" method="POST">
-        Product Name: <input type="text" name="name" value="<%=product.name%>"/> <br/>
-        Description: <input type="text" name="description" value="<%=product.description%>"/> <br/>
-        Price: <input type="text" name="price" value="<%=product.price%>"/> <br/>
-        Quantity on Hand: <input type="text" name="qty" value="<%=product.qty%>"/> <br/>
-    
-        <input type="submit" name="" value="Submit Changes"/>
+        <div class="row">
+            <div class="col-25">
+                <label for="name">Product Name:</label> 
+            </div>
+            <div class="col-75">
+                <input type="text" name="name" value="<%=product.name%>"/> <br/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="description">Description:</label> 
+            </div>
+            <div class="col-75">
+                <!-- <input type="text" name="description" value="<%=product.description%>"/> <br/> -->
+                <textarea name="description" placeholder="<%=product.description%>" style="height:50px"></textarea>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-25">
+                <label for="price">Price:</label>
+            </div>
+            <div class="col-75">
+                <input type="text" name="price" value="<%=product.price%>"/> <br/>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-25">
+                <label for="qty">Quantity on Hand:</label> 
+            </div>
+            <div class="col-75">
+                <input type="text" name="qty" value="<%=product.qty%>"/> <br/>
+            </div>
+            <br>
+            <br>
+            <input type="submit" class="button" name="" value="Submit Changes"/>
+        </div>
     </form>
-    
+</div>
 </body>
 </html>
