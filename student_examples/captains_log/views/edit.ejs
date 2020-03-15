@@ -9,7 +9,7 @@
     <h1>Edit Log Entry: <%=logEntry.name%></h1>
     <form action="/logs/<%=logEntry.id%>?_method=PUT" method="POST">
         Name: <input type="text" name="name" value="<%=logEntry.name%>"/><br/>
-        Entry: <input type="textarea" name="entry" value="<%=logEntry.entry%>" /><br/>
+        Entry: <textarea name="entry" value="<%=logEntry.entry%>" style="height:50px"></textarea><br/>
         
             <input type="checkbox" name="isShipBroken" 
                 <% if (logEntry.isShipBroken === true) { %>

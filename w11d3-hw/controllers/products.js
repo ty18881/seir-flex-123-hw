@@ -3,6 +3,7 @@ const router = express.Router();
 
 const Product = require("../models/products.js");
 const seedData = require("../models/seed_products.js");
+const User = require("../models/user.js");
 
 /**
  * ROUTES go here
@@ -73,6 +74,11 @@ router.get("/:id", (req, res) => {
 * 2. Display new quantity on screen.
 * + if quantity == 0 => display OUT OF STOCK, remove BUY button
 */
+/**
+ * HUNGRY FOR MORE
+ * 1.  if user exists, add item to their shopping cart
+ * 
+ */
 
 router.put("/:id/buy", (req,res) => {
    console.log(`In the Update Quantity route: Body = ${req.body}`);

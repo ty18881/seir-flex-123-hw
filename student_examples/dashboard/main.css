@@ -1,0 +1,81 @@
+:root {
+    --dark-cerulean: #124e78;
+    --maastricht-blue: #0b132b;
+    --yankees-blue: #1C2541;
+    --sea-serpent: #5bc0be;
+    --aquamarine: #6fffe9;
+    --react: #00d8ff;
+  }
+
+body {
+    background: var(--sea-serpent);
+  }
+
+  
+
+  .sidebar {
+      border: 1px solid crimson;
+      position: absolute;
+      /* distance from left edge of the page */
+      top: 0px;
+      left: 10px;
+      margin: 15px;
+      width: 200px;
+      height: 600px;
+      text-align: left;
+      padding: 5px;
+      vertical-align: middle;
+
+  }
+
+  .small-container {
+      top: 0px;
+      left: 250px;
+      height: 250px;
+      position: absolute;
+
+  }
+
+  .small-left {
+      border: 1px solid greenyellow;
+      float: left;
+      margin: 15px;
+      width: 150px;
+      height: 200px;
+  }
+  .small-center {
+      border: 1px solid pink;
+      float: left;
+      margin: 15px;
+      width: 150px;
+      height: 200px;
+  }
+
+  .small-right {
+      border: 1px solid blue;
+      float: left;
+      margin: 15px;
+      width: 150px;
+      height: 200px;
+  }
+
+  .analysis-data {
+      text-align: center;
+  }
+
+  .visitor-content {
+      position: absolute;
+      top: 250px;
+      left: 250px;
+      height: 350px;
+      width: 600px;
+      border: 1px solid orange;
+  }
+
+  .visitor-nested {
+      border: 1px dotted white;
+      width: 90%;
+      position: relative;
+      height: 65%;
+      margin: auto;
+  }

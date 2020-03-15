@@ -1,0 +1,60 @@
+      * {
+        box-sizing: border-box;
+        font-size: 18px;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        margin: 0;
+      }
+      
+      .main {
+          display: flex;
+          flex: 1;
+      }
+
+      .main > nav {
+          order: -1;
+          flex: 0 0 20vw;
+          background: #d5dce8;
+      }
+
+      .art-container {
+          display: flex;
+          flex-direction: row;    
+          
+      }
+
+      .small-left, .small-center, .small-right {
+        flex: 0 0 65%;  
+        height: 40vh; 
+        background: gray;
+        padding: 5px;
+        margin: 0px 10px;
+      }
+
+      .low-container {
+          display: flex;
+          flex-direction: row;
+        min-height: 30vw;
+          
+      }
+      .visitors {
+          border: 1px solid red;
+          padding: 0px 0px 0px 2px;
+          margin: 10px 10px;
+          padding: 0px 5px;
+          flex: 0 0 47vw;
+      }
+
+      .visitor-graph {
+          border: 1px solid gold;
+          width: 95%;
+          min-height: 20vw;
+          margin: 15px;
+          padding: 0px 5px;
+          
+      }
+
+      

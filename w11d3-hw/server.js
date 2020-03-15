@@ -24,6 +24,7 @@ mongoose.connection.once('open', ()=> {
 
 const Product = require("./models/products.js");
 const seedData = require("./models/seed_products.js");
+const User = require("../models/user.js");
 
 // import the express router
 const productsController = require("./controllers/products.js");

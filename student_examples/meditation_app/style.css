@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.app {
+    height: 100vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.time-select, 
+.sound-picker,
+.player-container
+ {
+    height: 80%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.player-container svg {
+    position: absolute;
+    height: 50%;
+    top: 50%;
+    left: 50%;
+    /* centers the circle inside of the player container div */
+    transform: translate(-50%, -50%) rotate(-90deg);
+    /* clicking on the SVG elicits no response from the program */
+    pointer-events: none; 
+}
+
+.time-display {
+    position: absolute;
+    bottom: 10%;
+    color: white;
+    font-size: 50px;
+
+}
+video {
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    /* put the video in the background on the screen so the buttons appear */
+    z-index: -10;
+}
+
+.time-select button, 
+.sound-picker button {
+    color: white;
+    width: 30%;
+    height: 10%;
+    /* so image under the button is visible */
+    background: none;
+    border: 2px solid white;
+    /* upon hover, cursor turns to a pointer */
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 20px;
+    transition: all 0.5s ease;
+}
+
+/* change background when we hover on the time select buttons */
+.time-select button:hover {
+    color: black;
+    background: white;
+}
+
+.sound-picker button {
+    border: none;
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    padding: 30px;
+}
+
+.sound-picker button:nth-child(1){
+    background:#4972A1 ;
+}
+
+.sound-picker button:nth-child(2){
+    background: #a14f49;
+}
+
+/* style the image inside of the sound picker's buttons */
+.sound-picker button img {
+    height: 100%;
+}
