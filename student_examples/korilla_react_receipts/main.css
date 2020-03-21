@@ -1,0 +1,12 @@
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+ul {
+    list-style-type: none;
+}
+.receipt {
+    border: 1px solid green;
+    flex: 1 0 1;
+}
