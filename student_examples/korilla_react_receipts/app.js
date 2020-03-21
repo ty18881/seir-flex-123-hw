@@ -3,7 +3,7 @@ class Receipt extends React.Component {
     
     render () {
         return (
-            <div>
+            <div className="receipt">
                 <h1>
                 {this.props.receipt.person}
                 </h1>
@@ -38,9 +38,7 @@ constructor(props) {
     super(props);
 
     this.state = { 
-        receipt1: receipt1,
-        receipt2: receipt2,
-        receipt3: receipt3
+        receipts: receipts
     };
 }
     
@@ -48,15 +46,9 @@ constructor(props) {
         return (
             <div>       
                 <h1 className="truck">Korilla</h1>
-                <div className="receipt">
-                   {this.state.receipt1.paid ? '' : <Receipt receipt={this.state.receipt1}/>}
-                </div>
-                <div className="receipt">
-                   {this.state.receipt2.paid ? "" :  <Receipt receipt={this.state.receipt2}/>}
-                </div>
-                <div className="receipt">
-                    {this.state.receipt3.paid ? "" : <Receipt receipt={this.state.receipt3}/>}
-                </div>
+                
+                    {this.state.receipts.map( receipt => receipt.paid ? "" : <Receipt receipt={receipt}/>)}
+                
             </div>
         )
     }

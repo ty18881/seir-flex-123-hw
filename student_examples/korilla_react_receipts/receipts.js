@@ -1,4 +1,4 @@
-const receipt1 =
+const receipts = [
   {
     person: 'Karolin',
     order: {
@@ -13,9 +13,9 @@ const receipt1 =
       cost: 22
     },
     paid: false
-  }
+  },
 
-  const receipt2 = {
+   {
     person: 'Jerrica',
     order: {
       main: 'Rice Bowl',
@@ -29,8 +29,25 @@ const receipt1 =
       cost: 19
     },
     paid: false
-  }
-  const receipt3 = {
+  },
+
+  {
+    person: 'Mark',
+    order: {
+      main: 'Rice Bowl',
+      protein: 'Ginger Soy Chix',
+      rice: 'Sticky Rice',
+      sauce: 'Korilla',
+      toppings: [
+        'Yuzu Pickled Sweet Pepper'
+      ],
+      drink: 'Korchata',
+      cost: 19
+    },
+    paid: false
+  },
+
+  {
     person: 'Matt',
     order: {
       main: 'Salad Bowl',
@@ -45,3 +62,4 @@ const receipt1 =
     },
     paid: true
   }
+]
