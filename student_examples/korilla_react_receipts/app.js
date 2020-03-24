@@ -3,7 +3,7 @@ class Receipt extends React.Component {
     
     render () {
         return (
-            <div className="receipt">
+            <div className="receipt" onClick={this.updatePaymentStatus}>
                 <h1>
                 {this.props.receipt.person}
                 </h1>
@@ -41,14 +41,21 @@ constructor(props) {
         receipts: receipts
     };
 }
+
+updatePaymentStatus= () =>  {
+    console.log("Clicked!");
+    this.setState({ paid: true});
+};
     
     render () {
         return (
-            <div>       
-                <h1 className="truck">Korilla</h1>
-                
+            <div>
+                <p> <h1 className="truck">Korilla</h1></p>
+                <br></br>
+                <div className="container">
                     {this.state.receipts.map( receipt => receipt.paid ? "" : <Receipt receipt={receipt}/>)}
-                
+                </div> 
+               
             </div>
         )
     }
@@ -56,5 +63,5 @@ constructor(props) {
 
 ReactDOM.render(
     <App />,
-    document.querySelector(".container")
+    document.querySelector(".main")
 )

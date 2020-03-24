@@ -1,12 +1,15 @@
 .container {
     display: flex;
-    flex-direction: row;
+    flex-flow: row wrap;
+    justify-content: space-around;
 }
 
 ul {
     list-style-type: none;
 }
 .receipt {
-    border: 1px solid green;
-    flex: 1 0 1;
+    border: 2px solid green;
+    flex: 1 1 auto;
+    background-color: wheat;
+    margin: 5px;
 }
