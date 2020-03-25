@@ -1,3 +1,62 @@
 * {
-    background-color: bisque;
+    background-color: white;
+   
+}
+
+
+.header{
+    height: 100%;
+    color: green;
+    text-align: center;
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSV4q8FgAp1EA11rFKZD3qW1yyKTHdIEsntb71am5aujEzMhJT1&s');
+}
+
+.button-container {
+    text-align: center;
+    margin: 12px;
+    padding: 2px;
+   
+}
+
+.button {
+    background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 8px;
+  transition-duration: 0.4s;
+  
+}
+.button:hover {
+    background-color: white; 
+  color: #4CAF50;
+  border-radius: 8px;
+  
+}
+
+.taco-recipe {
+    display: flex;
+    flex: row;
+    justify-content: space-around;
+    
+}
+
+.ingredient {
+    flex: 1 1 auto;
+    border: 1px solid green;
+    margin: 5px;
+    padding: 10px;
+    box-shadow: 10px 10px 5px #4CAF50;
+    width: 25%;
+}
+
+.ingredient p {
+    font-weight: bold;
+    color: green;
+    line-height: 1.6;
+    text-align: center;
 }

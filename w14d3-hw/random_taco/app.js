@@ -19,10 +19,19 @@ makeAPICall = title => {
   render() {
     return (
       <div>
-        <h1>Welcome to Wheel of Tacos!</h1>
-        <h2>Click to retrieve a special taco recipe!</h2>
-        <button onClick={this.makeAPICall}>Get Your Taco!</button>
-        {this.state.taco ? <TacoInfo taco={this.state.taco} /> : ""}
+        <div className="header">
+            <h1>Wheel of Tacos!</h1>
+            <h2>Unique taco recipies at your fingertips</h2>
+            
+          </div>
+        <div className="button-container">
+            <button class="button" onClick={this.makeAPICall}>Click to Spin</button>
+        </div>
+        
+        
+        
+            {this.state.taco ? <TacoInfo taco={this.state.taco} /> : ""}
+        
       </div>
     );
   }
