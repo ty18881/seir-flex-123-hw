@@ -183,8 +183,43 @@ def euler_1 max_num
     sum
 end
 
-p euler_1 10
+# p euler_1 10
 
-p euler_1 100
+# p euler_1 100
 
-p euler_1 1000
+# p euler_1 1000
+
+### Primes
+
+## Check Prime - Return true if input is prime, return false otherwise
+
+def check_prime? input_num
+
+    result = (2..Math.sqrt(input_num)).none? { |num| (input_num % num).zero?}
+
+end
+
+# p check_prime? 7
+
+# p check_prime? 10
+
+# p check_prime? 17
+
+## Get Primes - print the prime numbers up to the given number
+
+def get_primes input_num
+    counter = 1
+    primes =[]
+
+    while counter <= input_num
+        if (check_prime? counter)
+            primes << counter
+        end
+        counter+=1
+    end
+    return primes
+end
+
+p get_primes 19
+
+p get_primes 20
