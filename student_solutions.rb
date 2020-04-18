@@ -97,3 +97,26 @@ colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
 
 # colors.each { |color| p color.upcase}
 
+### Methods
+
+## Find Area
+# def find_area height, width
+#     height * width
+# end
+
+# p find_area 10, 10
+
+# p find_area 10, 20
+
+## Multiple Each By Five
+# nums = [5, 5, 6, 7, 2, 4, 3, 2, 1, 9, 7, 6, 0, 0]
+
+# def multiply_each_by_five arr
+#     products = []
+#     arr.each { |num| 
+#         products << num * 5    
+#     }
+#     products
+# end
+
+# p multiply_each_by_five nums
