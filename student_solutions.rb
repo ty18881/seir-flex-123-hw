@@ -120,3 +120,47 @@ colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
 # end
 
 # p multiply_each_by_five nums
+
+### Methods with Hashes
+
+book = {
+  title: 'The Great Gatsby',
+  author: 'F Scott Fitzgerald',
+  year: 1925,
+  price: 10
+}
+
+lamp = {
+  type: 'reading',
+  brand: 'Ikea',
+  price: 25
+}
+
+table = {
+  type: 'bed side',
+  brand: 'Crate & Barrel',
+  color: 'birch',
+  price: 50
+}
+
+## Print Price
+
+def print_price input_hash
+
+    input_hash[:price]
+end
+
+# p print_price table
+
+# p print_price book
+
+## sum the prices from two hashes
+
+def print_item_sums hash_1, hash_2
+
+    the_sum = 0
+    the_sum = hash_1[:price] + hash_2[:price]
+
+end
+
+p print_item_sums table, book
