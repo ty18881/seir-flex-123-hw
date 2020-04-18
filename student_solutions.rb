@@ -82,4 +82,18 @@ nums = [5, 5, 6, 7, 2, 4, 3, 2, 1, 9, 7, 6, 0, 0, 35, 19, 66, 3, 22, 21, 4, 4, 4
 
 ## NUMBER 16
 
-p nums.select { |num| num % 5 == 0 && num != 0}
+# p nums.select { |num| num % 5 == 0 && num != 0}
+
+### Color Array
+
+colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
+
+# print random color from the array
+# p colors.sample
+
+# print the array in reverse
+
+#p colors.reverse
+
+# colors.each { |color| p color.upcase}
+
