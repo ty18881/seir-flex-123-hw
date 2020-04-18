@@ -163,4 +163,28 @@ def print_item_sums hash_1, hash_2
 
 end
 
-p print_item_sums table, book
+# p print_item_sums table, book
+
+### Solving Problems with Ruby
+
+## Euler problem 1
+
+def euler_1 max_num
+    sum = 0
+
+    counter = 0
+
+    while counter < max_num 
+        if ( counter % 3 == 0 || counter % 5 == 0)
+            sum = sum + counter
+        end
+        counter +=1
+    end
+    sum
+end
+
+p euler_1 10
+
+p euler_1 100
+
+p euler_1 1000
