@@ -7,6 +7,8 @@ $the_deck = []  # holds the cards we'll be playing with
 
 $num_rounds = 0 # number of rounds / hands dealt
 
+$bet_amount = 10
+
 class Player 
     attr_accessor :hand, :bankroll, :name, :score
 
@@ -84,15 +86,15 @@ def determine_and_reward_winner house, player
         if score1 > 21
             
                 puts "House goes bust, Player Wins!"
-                player.update_bankroll 10
-                house.update_bankroll -10
+                player.update_bankroll $bet_amount
+                house.update_bankroll -$bet_amount
                
             
         elsif score2 > 21
             
                 puts "Player goes bust, House Wins"
-                house.update_bankroll 10
-                player.update_bankroll -10
+                house.update_bankroll $bet_amount
+                player.update_bankroll -$bet_amount
              
             
         elsif score1 == score2
@@ -103,14 +105,14 @@ def determine_and_reward_winner house, player
         elsif score1 > score2
             
                 puts "House Wins!"
-                house.update_bankroll 10
-                player.update_bankroll -10
+                house.update_bankroll $bet_amount
+                player.update_bankroll -$bet_amount
             
         elsif score2 > score1
             
                 puts "Player Wins!"
-                player.update_bankroll 10
-                house.update_bankroll -10
+                player.update_bankroll $bet_amount
+                house.update_bankroll -$bet_amount
             
             
         end
@@ -192,7 +194,7 @@ puts "What's your name?"
 
 username = gets.chomp
 
-puts "Hello #{username}!  Thanks for joining us at #{borgata.name}!  Should we deal you in (d) or you folding? (q)"
+puts "Hello #{username}!  Thanks for joining us at #{borgata.name}!  Should we deal you in (d) or you folding? (q)."
 
 userchoice = gets.chomp
 
@@ -204,12 +206,15 @@ while userchoice == "d" do
         puts %q{
             We're playing with one deck.  
             No Jokers.  
-            Aces High.  
+            Default bet is $10 unless you select another amount
             You'll start off with $100
             Shuffling the Cards...
             Good Luck!
         
         }
+
+        ## only shuffle when the game first begins.
+        $the_deck.shuffle!(random: Random.new(45))
 
         humanPlayer = Player.new username.chomp, 100
         
@@ -220,17 +225,19 @@ while userchoice == "d" do
         $last_round = true
     end
 
+    puts "What would you like to bet?  Whole numbers only please."
+$bet_amount = gets.chomp.to_i
 
-$the_deck.shuffle!(random: Random.new(45))
+puts "Betting #{$bet_amount} on this hand."
 
 
 humanPlayer.hand = deal_cards
 
-p "#{humanPlayer.name} you have #{humanPlayer.hand}"
+p "#{humanPlayer.name} you have #{humanPlayer.hand[0].value} and #{humanPlayer.hand[1].value}"
 
 borgata.hand = deal_cards
 
-p "The House has #{borgata.hand}"
+p "The House has #{borgata.hand[0].value} and #{borgata.hand[1].value}"
 
 
 
@@ -244,7 +251,7 @@ p "Current bankrolls:  The House: #{borgata.bankroll}  #{humanPlayer.name}: #{hu
 
     if (!$last_round && humanPlayer.bankroll > 0)
 
-        p "Should we deal you in (d) or you folding? (q)"   
+        p "Should we deal you in (d) or you folding? (q). (c) to check your balance."   
 
         $num_rounds+= 1
 
