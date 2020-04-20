@@ -44,10 +44,17 @@ def deal_cards
     prng = Random.new
     
     ## prng.rand => generate random index used to select a card.
-    ## slice! => remove the card at that index from the 
-    card1 = $the_deck.slice!(prng.rand($the_deck.length))
-    card2 = $the_deck.slice!(prng.rand($the_deck.length-1))
-
+    ## slice! => remove the card at that index from the deck
+    ## rand cannot accept zero as an argument.
+    ## if we're down to the last two cards, just return them
+    
+    if $the_deck.length == 2
+        card1 = $the_deck.slice!(1)
+        card2 = $the_deck.slice!(0)
+    else
+        card1 = $the_deck.slice!(prng.rand($the_deck.length))
+        card2 = $the_deck.slice!(prng.rand($the_deck.length-1))
+    end
     ## push both cards into the player's hand
     player_hand << card1
     player_hand << card2
@@ -66,8 +73,8 @@ def determine_and_reward_winner house, player
     #     ## input are two numbers
     #     ## compare the sums.
     # score1 = the house
-    p "inside determine winner and Borgata's score is #{house.score}"
-    p "inside determine winner and Player's score is #{player.score}"
+    # p "inside determine winner and Borgata's score is #{house.score}"
+    # p "inside determine winner and Player's score is #{player.score}"
     
     score1 = house.score
     score2 = player.score
@@ -159,8 +166,6 @@ while $counter < 4
     $counter+=1
 end
 
-p $the_deck.length
-
 
 ### basic game play.
 
@@ -194,6 +199,7 @@ userchoice = gets.chomp
 while userchoice == "d" do
 
     ## if we're not in the first hand, don't reset the player's bankroll
+
     if ($num_rounds == 0 )
         puts %q{
             We're playing with one deck.  
@@ -208,23 +214,22 @@ while userchoice == "d" do
         humanPlayer = Player.new username.chomp, 100
     end
 
-
+    if ($the_deck.length == 4)
+        p "Dealer change after this hand"
+        $last_round = true
+    end
 
 
 $the_deck.shuffle!(random: Random.new(45))
 
-# function to pop two cards off the deck and give them to the player.
-
-
 
 humanPlayer.hand = deal_cards
-# p "Human Player has #{humanPlayer.hand}"
+
+p "#{humanPlayer.name} you have #{humanPlayer.hand}"
 
 borgata.hand = deal_cards
 
-
-p $the_deck.length
-
+p "The House has #{borgata.hand}"
 
 
 
@@ -235,13 +240,22 @@ determine_and_reward_winner borgata, humanPlayer
 
 p "Current bankrolls:  The House: #{borgata.bankroll}  #{humanPlayer.name}: #{humanPlayer.bankroll}"
 
-p "Should we deal you in (d) or you folding? (q)"
+    if (!$last_round)
 
-$num_rounds+= 1
+        p "Should we deal you in (d) or you folding? (q)"
 
-userchoice = gets.chomp
+        $num_rounds+= 1
 
+        userchoice = gets.chomp
+    else
+        p "Dealer change please come back soon!"
+        userchoice ="q"
+    end
 end    
+
+## Possible additions here
+# 1.  Show # hands played
+# 2.  Show player's final bankroll
 
 p "Thanks for playing!"
 
