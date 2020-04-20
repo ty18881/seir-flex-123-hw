@@ -212,6 +212,7 @@ while userchoice == "d" do
         }
 
         humanPlayer = Player.new username.chomp, 100
+        
     end
 
     if ($the_deck.length == 4)
@@ -240,16 +241,20 @@ determine_and_reward_winner borgata, humanPlayer
 
 p "Current bankrolls:  The House: #{borgata.bankroll}  #{humanPlayer.name}: #{humanPlayer.bankroll}"
 
-    if (!$last_round)
 
-        p "Should we deal you in (d) or you folding? (q)"
+    if (!$last_round && humanPlayer.bankroll > 0)
+
+        p "Should we deal you in (d) or you folding? (q)"   
 
         $num_rounds+= 1
 
         userchoice = gets.chomp
-    else
+    elsif $last_round
         p "Dealer change please come back soon!"
         userchoice ="q"
+    elsif humanPlayer.bankroll <= 0
+        p "#{humanPlayer.name}, you've gone bust.  Nearest ATM is next to the restrooms."
+        userchoice = "q"
     end
 end    
 
