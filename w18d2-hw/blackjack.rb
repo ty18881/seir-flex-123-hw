@@ -220,33 +220,39 @@ while userchoice == "d" do
         
     end
 
+
+    # we're getting low on cards. Alert the player this is going to be the last turn.
+
     if ($the_deck.length == 4)
         p "Dealer change after this hand"
         $last_round = true
     end
 
+    ## solicit bet value from the player
     puts "What would you like to bet?  Whole numbers only please."
-$bet_amount = gets.chomp.to_i
+    $bet_amount = gets.chomp.to_i
 
-puts "Betting #{$bet_amount} on this hand."
-
-
-humanPlayer.hand = deal_cards
-
-p "#{humanPlayer.name} you have #{humanPlayer.hand[0].value} and #{humanPlayer.hand[1].value}"
-
-borgata.hand = deal_cards
-
-p "The House has #{borgata.hand[0].value} and #{borgata.hand[1].value}"
+    puts "Betting #{$bet_amount} on this hand."
 
 
+    humanPlayer.hand = deal_cards
 
-player_score = humanPlayer.calc_my_score
-borgata_score = borgata.calc_my_score
+    p "#{humanPlayer.name} you have #{humanPlayer.hand[0].value} and #{humanPlayer.hand[1].value}"
 
-determine_and_reward_winner borgata, humanPlayer
+    borgata.hand = deal_cards
 
-p "Current bankrolls:  The House: #{borgata.bankroll}  #{humanPlayer.name}: #{humanPlayer.bankroll}"
+    p "The House has #{borgata.hand[0].value} and #{borgata.hand[1].value}"
+
+
+    ## calculate each player's score for the round.
+    player_score = humanPlayer.calc_my_score
+    borgata_score = borgata.calc_my_score
+
+    ## determine the winner
+    ## update each bankroll.
+    determine_and_reward_winner borgata, humanPlayer
+
+    puts "Current bankrolls:  The House: #{borgata.bankroll}  #{humanPlayer.name}: #{humanPlayer.bankroll}"
 
 
     if (!$last_round && humanPlayer.bankroll > 0)
@@ -255,14 +261,29 @@ p "Current bankrolls:  The House: #{borgata.bankroll}  #{humanPlayer.name}: #{hu
 
         $num_rounds+= 1
 
+        ## check if user wishes to continue
         userchoice = gets.chomp
+
+        if userchoice.chomp == "c"
+            puts "Your bankroll's current balance: #{humanPlayer.bankroll}"
+            ## prompt for user's new choice.
+            p "Should we deal you in (d) or you folding? (q)." 
+            userchoice = gets.chomp
+
+        end
+
     elsif $last_round
+        ## we're out of cards so the game will end here.
         p "Dealer change please come back soon!"
         userchoice ="q"
     elsif humanPlayer.bankroll <= 0
+        ## player is out of money so game ends here.
         p "#{humanPlayer.name}, you've gone bust.  Nearest ATM is next to the restrooms."
         userchoice = "q"
     end
+
+    
+    ## end of the while loop
 end    
 
 ## Possible additions here
@@ -270,10 +291,6 @@ end
 # 2.  Show player's final bankroll
 
 p "Thanks for playing!"
-
-
-
-
 
 
 
