@@ -4,7 +4,8 @@ class NewForm extends React.Component {
   state = {
     name: "",
     species: "",
-    image: ""
+    image: "",
+    personalityTraits: []
   };
 
   handleChange = event => {
@@ -17,7 +18,8 @@ class NewForm extends React.Component {
       method: "POST",
       body: JSON.stringify({ name: this.state.name,
         species: this.state.species,
-        image: this.state.image
+        image: this.state.image,
+        personalityTraits: this.state.personalityTraits
     }),
       headers: {
         "Content-Type": "application/json"
@@ -30,6 +32,7 @@ class NewForm extends React.Component {
           name: "",
           species: "",
           image: "",
+          personalityTraits: []
         });
       })
       .catch(error => console.error({ Error: error }));
@@ -45,7 +48,7 @@ class NewForm extends React.Component {
           name="name"
           onChange={this.handleChange}
           value={this.state.name}
-          placeholder="add a holiday"
+          placeholder="Pet Name"
         />
 
         <label htmlFor="species"></label>
@@ -55,7 +58,7 @@ class NewForm extends React.Component {
           name="species"
           onChange={this.handleChange}
           value={this.state.species}
-          placeholder="Pet Name"
+          placeholder="Species (cat,dog,bird,etc)"
         />
 
         <label htmlFor="image"></label>
@@ -66,6 +69,16 @@ class NewForm extends React.Component {
           onChange={this.handleChange}
           value={this.state.image}
           placeholder="Photo"
+        />
+
+        <label htmlFor="personalityTraits"></label>
+        <input
+          type="text"
+          id="personalityTraits"
+          name="personalityTraits"
+          onChange={this.handleChange}
+          value={this.state.personalityTraits}
+          placeholder="Personality Traits separated by commas"
         />
 
         <input type="submit" value="Add new pet to our gathering" />

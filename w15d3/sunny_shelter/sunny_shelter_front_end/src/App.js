@@ -49,6 +49,7 @@ class App extends React.Component {
                 <td> {animal.name}</td>
                 <td> {animal.species}</td>
                 <td> <img src={animal.image} alt="Pet Photo"/></td>
+                <td> {animal.personalityTraits}</td>
               </tr>
             ))}
           </tbody>
