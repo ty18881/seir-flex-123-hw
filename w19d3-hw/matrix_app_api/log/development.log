@@ -282,3 +282,21 @@ Migrating to ChangeTableName (20200424225309)
   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
   [1m[36mCharacter Create (0.4ms)[0m  [1m[32mINSERT INTO "characters" ("name", "description") VALUES ($1, $2) RETURNING "id"[0m  [["name", "Agent Smith"], ["description", "AI Program"]]
   [1m[35m (2.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCharacter Load (1.6ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCharacter Update (0.8ms)[0m  [1m[33mUPDATE "characters" SET "img_url" = $1 WHERE "characters"."id" = $2[0m  [["img_url", "https://www.screengeek.net/2020/02/06/the-matrix-4-keanu-reeves-neo-set-videos-photos/"], ["id", 1]]
+  [1m[35m (10.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCharacter Load (0.7ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCharacter Update (0.5ms)[0m  [1m[33mUPDATE "characters" SET "img_url" = $1 WHERE "characters"."id" = $2[0m  [["img_url", "https://screenrant.com/matrix-4-theory-carrie-anne-moss-trinity-return/"], ["id", 2]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCharacter Load (0.8ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCharacter Update (0.8ms)[0m  [1m[33mUPDATE "characters" SET "img_url" = $1 WHERE "characters"."id" = $2[0m  [["img_url", "https://www.gamesradar.com/matrix-4-young-morpheus-michael-b-jordan-prequel/"], ["id", 3]]
+  [1m[35m (9.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCharacter Create (0.7ms)[0m  [1m[32mINSERT INTO "characters" ("name", "description", "img_url") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "The Oracle"], ["description", "foresight fighting the matrix"], ["img_url", "https://en.wikipedia.org/wiki/The_Oracle_(The_Matrix)#/media/File:The_Oracle_(i).gif"]]
+  [1m[35m (10.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCharacter Load (0.9ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCharacter Load (0.8ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCharacter Destroy (10.4ms)[0m  [1m[31mDELETE FROM "characters" WHERE "characters"."id" = $1[0m  [["id", 4]]
