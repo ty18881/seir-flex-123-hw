@@ -8,14 +8,25 @@
 
 ## seeding the Tweets database
 
-Tweet.create({
-    title: "Just found this",
-    content: "the square of the hypotenuse is equal to the sum of the squares of the other two sides",
-    author: "Pythagoras570"
-  })
+# Tweet.create({
+#     title: "Just found this",
+#     content: "the square of the hypotenuse is equal to the sum of the squares of the other two sides",
+#     author: "Pythagoras570"
+#   })
   
-  Tweet.create({
-    title: "I'm walkin' here",
-    content: "Hey, I'm walkin' here!",
-    author: "Nicky62"
-  })
+#   Tweet.create({
+#     title: "I'm walkin' here",
+#     content: "Hey, I'm walkin' here!",
+#     author: "Nicky62"
+#   })
+
+## seed replies to tweets in the database
+
+Reply.create({
+    content: "I like this idea a lot"
+})
+
+Reply.create({
+    content: "My family agrees!"
+})
+

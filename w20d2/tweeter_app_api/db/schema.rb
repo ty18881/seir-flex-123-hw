@@ -10,13 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_25_195757) do
+ActiveRecord::Schema.define(version: 2020_04_25_211158) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "replies", force: :cascade do |t|
+    t.integer "tweet_id"
+    t.string "content"
+  end
+
   create_table "tweets", force: :cascade do |t|
-    t.string "title"
+    t.string "title", default: "2020-04-25 20:48:58.596794"
     t.text "content"
     t.string "author"
   end
