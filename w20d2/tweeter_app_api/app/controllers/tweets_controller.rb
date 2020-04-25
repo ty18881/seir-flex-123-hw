@@ -30,6 +30,12 @@ class TweetsController < ApplicationController
         tweet.update(tweet_params)
         render(json: {tweet: tweet}, status: 201)
       end
+
+      ## removing a tweet from the database.
+      def destroy 
+        tweet = Tweet.destroy(params[:id])
+        render(status: 204)
+      end
     private
     
     def tweet_params

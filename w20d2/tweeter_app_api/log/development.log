@@ -77,3 +77,29 @@ Processing by TweetsController#update as */*
 Completed 201 Created in 28ms (Views: 0.3ms | ActiveRecord: 8.9ms | Allocations: 5100)
 
 
+Started DELETE "/tweets/4" for ::1 at 2020-04-25 16:31:59 -0400
+Processing by TweetsController#destroy as */*
+  Parameters: {"tweet"=>{"title"=>"Crentist the dentist", "content"=>"My dentist's name is Crentist, maybe that's why he became a dentist", "author"=>"Dwight"}, "id"=>"4"}
+  [1m[36mTweet Load (0.4ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets" WHERE "tweets"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/tweets_controller.rb:36:in `destroy'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tweets_controller.rb:36:in `destroy'
+  [1m[36mTweet Destroy (0.4ms)[0m  [1m[31mDELETE FROM "tweets" WHERE "tweets"."id" = $1[0m  [["id", 4]]
+  ↳ app/controllers/tweets_controller.rb:36:in `destroy'
+  [1m[35m (4.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tweets_controller.rb:36:in `destroy'
+Completed 204 No Content in 25ms (Views: 0.1ms | ActiveRecord: 12.0ms | Allocations: 4578)
+
+
+Started GET "/tweets/4" for ::1 at 2020-04-25 16:32:08 -0400
+Processing by TweetsController#show as */*
+  Parameters: {"tweet"=>{"title"=>"Crentist the dentist", "content"=>"My dentist's name is Crentist, maybe that's why he became a dentist", "author"=>"Dwight"}, "id"=>"4"}
+  [1m[36mTweet Load (0.4ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets" WHERE "tweets"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/tweets_controller.rb:9:in `show'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.4ms | Allocations: 590)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Tweet with 'id'=4):
+  
+app/controllers/tweets_controller.rb:9:in `show'
