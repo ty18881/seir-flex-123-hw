@@ -134,3 +134,21 @@ Processing by MetaController#about as HTML
 Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 91)
 
 
+Started POST "/tweets/" for ::1 at 2020-04-25 16:41:40 -0400
+Processing by TweetsController#create as */*
+  Parameters: {"tweet"=>{"title"=>"NoName entry", "content"=>"My dentist's name is Crentist, maybe that's why he became a dentist", "author"=>""}}
+Completed 422 Unprocessable Entity in 49ms (Views: 1.1ms | ActiveRecord: 4.6ms | Allocations: 5555)
+
+
+Started POST "/tweets/" for ::1 at 2020-04-25 16:41:52 -0400
+Processing by TweetsController#create as */*
+  Parameters: {"tweet"=>{"title"=>"", "content"=>"My dentist's name is Crentist, maybe that's why he became a dentist", "author"=>"ty18881"}}
+Completed 422 Unprocessable Entity in 3ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 722)
+
+
+Started POST "/tweets/" for ::1 at 2020-04-25 16:41:58 -0400
+Processing by TweetsController#create as */*
+  Parameters: {"tweet"=>{"title"=>"", "content"=>"My dentist's name is Crentist, maybe that's why he became a dentist"}}
+Completed 422 Unprocessable Entity in 3ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 943)
+
+
