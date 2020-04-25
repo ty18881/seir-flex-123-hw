@@ -1,4 +1,5 @@
 import React from 'react';
+import Popup from "reactjs-popup";
 
 import './App.css';
 import NewForm from "./components/NewForm"
@@ -34,8 +35,20 @@ class App extends React.Component {
       animals: copyAnimals,
       name: ""
     });
+    console.log("Handled add animal - is this running upon start up?")
   };
 
+  toggleAdoptionFlag = input => {
+    console.log("Toggle Adoption Flag - CLICKED");
+    if (input.adopted == true){
+      input.adopted = false;
+      
+    } else
+    {
+      input.adopted = true;
+    }
+    console.log("Toggle Adoption Flag -" + input.adopted)
+  };
 
   render () {
   return (
@@ -50,6 +63,8 @@ class App extends React.Component {
                 <td> {animal.species}</td>
                 <td> <img src={animal.image} alt="Pet Photo"/></td>
                 <td> {animal.personalityTraits}</td>
+                <td>Adopted? = {animal.adopted == null ? "No": "yes"}</td>
+                <td><button type="button" onClick={() => this.toggleAdoptionFlag(animal)}>Pending Adoption</button></td>
               </tr>
             ))}
           </tbody>
