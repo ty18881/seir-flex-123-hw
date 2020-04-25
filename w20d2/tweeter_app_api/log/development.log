@@ -63,3 +63,17 @@ Processing by TweetsController#create as */*
 Completed 201 Created in 15ms (Views: 0.3ms | ActiveRecord: 7.0ms | Allocations: 2183)
 
 
+Started PUT "/tweets/4" for ::1 at 2020-04-25 16:27:38 -0400
+Processing by TweetsController#update as */*
+  Parameters: {"tweet"=>{"title"=>"Crentist the dentist", "content"=>"My dentist's name is Crentist, maybe that's why he became a dentist", "author"=>"Dwight"}, "id"=>"4"}
+  [1m[36mTweet Load (1.1ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets" WHERE "tweets"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/tweets_controller.rb:29:in `update'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tweets_controller.rb:30:in `update'
+  [1m[36mTweet Update (0.6ms)[0m  [1m[33mUPDATE "tweets" SET "title" = $1 WHERE "tweets"."id" = $2[0m  [["title", "Crentist the dentist"], ["id", 4]]
+  ↳ app/controllers/tweets_controller.rb:30:in `update'
+  [1m[35m (6.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tweets_controller.rb:30:in `update'
+Completed 201 Created in 28ms (Views: 0.3ms | ActiveRecord: 8.9ms | Allocations: 5100)
+
+
