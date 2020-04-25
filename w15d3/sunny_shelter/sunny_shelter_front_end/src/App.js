@@ -50,6 +50,17 @@ class App extends React.Component {
     console.log("Toggle Adoption Flag -" + input.adopted)
   };
 
+  deleteAnimal = (id) => {
+    fetch(baseURL + '/animals/' + id, {
+      method: 'DELETE'
+    }).then( response => {
+      const findIndex = this.state.animals.findIndex(animal => animal._id === id)
+      const copyAnimals = [...this.state.animals]
+      copyAnimals.splice(findIndex, 1)
+      this.setState({animals: copyAnimals})
+    })
+  }
+
   render () {
   return (
     <div className="container">
@@ -65,6 +76,7 @@ class App extends React.Component {
                 <td> {animal.personalityTraits}</td>
                 <td>Adopted? = {animal.adopted == null ? "No": "yes"}</td>
                 <td><button type="button" onClick={() => this.toggleAdoptionFlag(animal)}>Pending Adoption</button></td>
+                <td><button type="button" onClick={() => this.deleteAnimal(animal._id)}>Officially Adopted!</button></td>
               </tr>
             ))}
           </tbody>
