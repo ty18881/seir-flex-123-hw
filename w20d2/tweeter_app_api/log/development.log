@@ -39,3 +39,27 @@ Processing by TweetsController#show as HTML
 Completed 200 OK in 17ms (Views: 0.5ms | ActiveRecord: 5.9ms | Allocations: 3314)
 
 
+Started POST "/tweets" for ::1 at 2020-04-25 16:20:23 -0400
+Processing by TweetsController#create as */*
+  Parameters: {"tweet"=>{"title"=>"My first tweet", "content"=>"Just trying this mess out.", "author"=>"ty18881"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tweets_controller.rb:19:in `create'
+  [1m[36mTweet Create (0.9ms)[0m  [1m[32mINSERT INTO "tweets" ("title", "content", "author") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "My first tweet"], ["content", "Just trying this mess out."], ["author", "ty18881"]]
+  ↳ app/controllers/tweets_controller.rb:19:in `create'
+  [1m[35m (5.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tweets_controller.rb:19:in `create'
+Completed 201 Created in 33ms (Views: 0.2ms | ActiveRecord: 7.1ms | Allocations: 4451)
+
+
+Started POST "/tweets" for ::1 at 2020-04-25 16:21:41 -0400
+Processing by TweetsController#create as */*
+  Parameters: {"tweet"=>{"title"=>"Crentist", "content"=>"My dentist's name is Crentist, maybe that's why he became a dentist", "author"=>"Dwight"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tweets_controller.rb:19:in `create'
+  [1m[36mTweet Create (0.5ms)[0m  [1m[32mINSERT INTO "tweets" ("title", "content", "author") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "Crentist"], ["content", "My dentist's name is Crentist, maybe that's why he became a dentist"], ["author", "Dwight"]]
+  ↳ app/controllers/tweets_controller.rb:19:in `create'
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tweets_controller.rb:19:in `create'
+Completed 201 Created in 15ms (Views: 0.3ms | ActiveRecord: 7.0ms | Allocations: 2183)
+
+
