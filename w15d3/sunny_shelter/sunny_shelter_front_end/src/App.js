@@ -35,10 +35,13 @@ class App extends React.Component {
       animals: copyAnimals,
       name: ""
     });
-    console.log("Handled add animal - is this running upon start up?")
   };
 
   toggleAdoptionFlag = input => {
+    // identify the item in the state variable
+    // update the adopted flag
+    // reset state variable
+    // this will trigger a re-rendering i think.
     console.log("Toggle Adoption Flag - CLICKED");
     if (input.adopted == true){
       input.adopted = false;
@@ -47,9 +50,18 @@ class App extends React.Component {
     {
       input.adopted = true;
     }
+    const findIndex = this.state.animals.findIndex(animal => animal._id === input._id)
+    const copyAnimals = [...this.state.animals]
+    copyAnimals.splice(findIndex, 1)
+    // add back the revised version of the animal object.
+    copyAnimals.unshift(input)
+    this.setState({animals: copyAnimals})
+
     console.log("Toggle Adoption Flag -" + input.adopted)
   };
 
+// remove the animal record from the database
+// remove the animal from the collection in state as well so it doesn't appear on the screen.
   deleteAnimal = (id) => {
     fetch(baseURL + '/animals/' + id, {
       method: 'DELETE'
