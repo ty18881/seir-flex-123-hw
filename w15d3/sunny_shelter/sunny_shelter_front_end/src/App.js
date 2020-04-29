@@ -4,6 +4,10 @@ import Popup from "reactjs-popup";
 import './App.css';
 import NewForm from "./components/NewForm"
 import ShowAnimal from './components/ShowAnimal';
+// components to support authentication
+
+import SignIn from "./components/SignIn.js"
+import SignUp from "./components/SignUp.js"
 
 let baseURL = "http://localhost:3003"
 
@@ -52,10 +56,61 @@ class App extends React.Component {
     })
   }
 
+
+  // authentication specific methods.
+  handleSignUp = (username, password) => {
+    console.log(username, password);
+    fetch(baseURL + "/users", {
+      method: "POST",
+      body: JSON.stringify({
+        username: username,
+        password: password,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((resJson) => {
+        console.log(resJson);
+        this.setState({
+          currentUser: resJson.username,
+        });
+      })
+      .catch((error) => console.error({ Error: error }));
+  };
+
+  handleSignIn = (username, password) => {
+    // console.log(username, password);
+    fetch(baseURL + "/sessions", {
+      method: "POST",
+      body: JSON.stringify({
+        username: username,
+        password: password,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((resJson) => {
+        console.log(resJson);
+        this.setState({
+          currentUser: resJson.username,
+        });
+      })
+      .catch((error) => console.error({ Error: error }));
+  };
+
+
   render () {
   return (
     <div className="container">
         <h1>Sunny Philadelphia Shelter Website</h1>
+        {/* Only display the above header if the user isn't logged in. */}
+        
+        {this.state.currentUser ? (
+        <>
         <NewForm baseURL={baseURL} handleAddAnimal={this.handleAddAnimal} />
         <br></br>
         <table>
@@ -84,15 +139,24 @@ class App extends React.Component {
             ))}
           </tbody>
         </table>
+        </>
+
+        ) : (
+          <>
+              <SignIn handleSignIn={this.handleSignIn} />
+              <SignUp handleSignUp={this.handleSignUp} />
+          </>
+        )}
+        )
       </div>
+      
   );
 }
 
-// trigger={<button>Click to learn more about {animal.name}</button>}>
 
-componentDidMount() {
-  this.getAnimals();
-}
+  componentDidMount() {
+    this.getAnimals();
+  }
 }
 
 export default App;
