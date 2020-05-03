@@ -217,3 +217,15 @@ Processing by TweetsController#show as */*
 Completed 200 OK in 99ms (Views: 24.8ms | ActiveRecord: 12.0ms | Allocations: 12326)
 
 
+Started GET "/tweets/1" for ::1 at 2020-04-25 17:43:15 -0400
+Processing by TweetsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTweet Load (0.6ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets" WHERE "tweets"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tweets_controller.rb:9:in `show'
+  [1m[36mCACHE Tweet Load (0.0ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets" WHERE "tweets"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tweets_controller.rb:10:in `show'
+  [1m[36mReply Load (0.4ms)[0m  [1m[34mSELECT "replies".* FROM "replies" WHERE "replies"."tweet_id" = $1[0m  [["tweet_id", 1]]
+  ↳ app/controllers/tweets_controller.rb:11:in `show'
+Completed 200 OK in 8ms (Views: 3.4ms | ActiveRecord: 1.3ms | Allocations: 2157)
+
+
