@@ -1,23 +1,37 @@
 import React from "react";
 
-class NewForm extends React.Component {
+// This is the "brute force" method.
+// create a separate component - very similar to the NewForm 
+// that can capture updates and save them to the datastore.
+// ShowAnimal will send down the following prosp:
+//  1. animal object
+//  2. baseURL
+//  3. handleUpdateAnimal - callback function to update the animal's object in the application state
+
+class UpdateForm extends React.Component {
   state = {
-    name: "",
-    species: "",
-    image: "",
-    personalityTraits: [],
-    buttonLabel: "Add new pet to our gathering"
+    name: this.props.animal.name,
+    species: this.props.animal.species,
+    image: this.props.animal.image,
+    personalityTraits: this.props.animal.personalityTraits,
+    buttonLabel: `Update ${this.props.animal}'s Record`
+    
   };
 
   handleChange = event => {
     this.setState({ [event.target.id]: event.target.value });
   };
 
-  handleSubmit = event => {
+
+
+// this will update the animal's record in our database.
+
+  handleUpdate = event => {
     event.preventDefault();
-    fetch(this.props.baseURL + "/animals", {
-      method: "POST",
-      body: JSON.stringify({ name: this.state.name,
+    fetch(`${this.props.baseURL}/animals/${this.props.animal._id}`, {
+      method: "PUT",
+      body: JSON.stringify({ 
+        name: this.state.name,
         species: this.state.species,
         image: this.state.image,
         personalityTraits: this.state.personalityTraits
@@ -28,7 +42,7 @@ class NewForm extends React.Component {
     })
       .then(res => res.json())
       .then(resJson => {
-        this.props.handleAddAnimal(resJson);
+        this.props.handleUpdateAnimal(resJson, this.props.animal._id);
         this.setState({
           name: "",
           species: "",
@@ -41,7 +55,12 @@ class NewForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+        <>
+        <div className="photo">
+            <h1>Modify {this.props.animal.name}'s Record</h1>
+            <img src={this.props.animal.image} alt={this.props.animal.name} />
+        </div>
+      <form onSubmit={this.handleUpdate}>
         <label htmlFor="name"></label>
         <input
           type="text"
@@ -49,7 +68,7 @@ class NewForm extends React.Component {
           name="name"
           onChange={this.handleChange}
           value={this.state.name}
-          placeholder="Pet Name"
+          placeholder={this.props.animal.name}
         />
 
         <label htmlFor="species"></label>
@@ -59,7 +78,7 @@ class NewForm extends React.Component {
           name="species"
           onChange={this.handleChange}
           value={this.state.species}
-          placeholder="Species (cat,dog,bird,etc)"
+          placeholder={this.props.animal.species}
         />
 
         <label htmlFor="image"></label>
@@ -69,7 +88,7 @@ class NewForm extends React.Component {
           name="image"
           onChange={this.handleChange}
           value={this.state.image}
-          placeholder="Photo"
+          placeholder={this.props.animal.image}
         />
 
         <label htmlFor="personalityTraits"></label>
@@ -79,13 +98,14 @@ class NewForm extends React.Component {
           name="personalityTraits"
           onChange={this.handleChange}
           value={this.state.personalityTraits}
-          placeholder="Personality Traits separated by commas"
+          placeholder={this.props.animal.personalityTraits}
         />
 
-        <input type="submit" value={this.props.buttonLabel} />
+        <input type="submit" value={this.state.buttonValue} />
       </form>
+      </>
     );
   }
 }
 
-export default NewForm;
+export default UpdateForm;

@@ -11,9 +11,9 @@ router.post("/", (req,res) => {
     User.findOne({ username: req.body.username}, (err, foundUser) => {
         // verify we found the user in the database, then confirm the password is correct
         
-        if (err == null) {
+        if (err !== null) {
             console.log("Session - Post: Fetch failed", err)
-            res.status(404).json({error: "Incorrect username or password"});
+            res.status(404).json({error: " USER ERROR - Incorrect username or password"});
         } else {
             if (bcrypt.compareSync(req.body.password, foundUser.password)) {
                 req.session.currentUser = foundUser;

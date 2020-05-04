@@ -33,6 +33,18 @@ class App extends React.Component {
       )
   }
 
+  // refresh the animal's record in state when changes are made in
+  // UpdateForm component.
+  handleUpdateAnimal = (animal, id) => {
+    console.log("Handle Update Animal - congrats! you got to the callback!");
+    const findIndex = this.state.animals.findIndex(animal => animal._id === id)
+    const copyAnimals = [...this.state.animals]
+    // splice:  replace item at findIndex, replace a single item, put animal in the old item's place
+    copyAnimals.splice(findIndex, 1, animal)
+    this.setState({animals: copyAnimals})
+
+  }
+
   handleAddAnimal = animal => {
     const copyAnimals = [...this.state.animals];
     copyAnimals.unshift(animal);
@@ -94,7 +106,7 @@ class App extends React.Component {
     })
       .then((res) => res.json())
       .then((resJson) => {
-        console.log(resJson);
+        // console.log(resJson);
         this.setState({
           currentUser: resJson.username,
         });
@@ -102,7 +114,35 @@ class App extends React.Component {
       .catch((error) => console.error({ Error: error }));
   };
 
+  
+  // Destroy session when user logs out
+  // also remove username from state.
 
+  handleLogout = () => {
+
+    this.setState({
+      currentUser: ""
+    })
+    // fetch(baseURL + "/sessions", {
+    //   method: "DELETE",
+    //   body: JSON.stringify({
+    //     username: username,
+    //     password: password,
+    //   }),
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    // })
+    //   .then((res) => res.json())
+    //   .then((resJson) => {
+    //     console.log(resJson);
+    //     this.setState({
+    //       currentUser: "",
+    //     });
+    //   })
+    //   .catch((error) => console.error({ Error: error }));
+
+  }
   render () {
   return (
     <div className="container">
@@ -125,13 +165,17 @@ class App extends React.Component {
                 <td> 
                   <Popup modal 
                     
-                       trigger={<img src={animal.image} alt="the here"></img> }>
+                       trigger={<img className="petimage" src={animal.image} alt="the here"></img> }>
                          {/* {animal.name} */}
+                         {/* <div className="petname">
+                           {animal.name}
+                         </div> */}
                   
                     {close => <ShowAnimal 
                         animal={animal}
                         deleteAnimal={this.deleteAnimal}
                         baseURL={baseURL}
+                        handleUpdateAnimal={this.handleUpdateAnimal}
                         />}
                   </Popup>
                 </td>
@@ -139,6 +183,8 @@ class App extends React.Component {
             ))}
           </tbody>
         </table>
+
+        <button className="logout" onClick={this.handleLogout}>Logout</button>
         </>
 
         ) : (
@@ -147,7 +193,7 @@ class App extends React.Component {
               <SignUp handleSignUp={this.handleSignUp} />
           </>
         )}
-        )
+        
       </div>
       
   );
