@@ -1,0 +1,9 @@
+\l => list all available databases
+
+\dt => display all tables in the current database
+
+\c database_name => switch to the specified database
+
+\d table_name => shows column definitions for the specified table
+
+\d+ table name => same as above with extended information
