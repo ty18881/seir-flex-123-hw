@@ -2,8 +2,9 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
 
   # GET /users
+  ## modifying this to return maximum six random users at a time.
   def index
-    @users = User.all
+    @users = User.all.sample(6)
 
     render json: @users
   end

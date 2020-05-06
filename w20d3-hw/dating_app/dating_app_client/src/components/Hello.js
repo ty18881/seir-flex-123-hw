@@ -2,30 +2,27 @@ import React, { Component } from "react";
 
 class Daters extends Component {
 
-    // hold daters in state
-    state = {
-        daters: []
-    }
-
-    // add method to collect Daters from our database
-    // and store the collection in state
-
-    getDaters = () => {
-        fetch("http://localhost:3000/users")
-        .then(res => res.json())
-        .then( jDaters => this.setState({ daters: jDaters}))
-        .catch( error => console.log(error))
-    };
-
-    componentDidMount() {
-        this.getDaters();
-    }
-
-    render () {
+     render () {
         return (
-            <h1>Hello Dating World!</h1>
+          <>
+            
+            {this.props.daters.map( dater => {
+              return (
+                <div key={dater.id}>
+                  <h3>Name: {dater.name} </h3>
+                  <img src={dater.img} alt={dater.name}/>
+                  <h4>Starsign: {dater.starsign} </h4>
+                  <h4>Age: {dater.age} </h4>
+                  {dater.ltl
+                    ? <h5> Loves to laugh and have a good time</h5>
+                    : <h5> Hates laughing, does not like having a good time</h5>
+                  }
+                </div>
+              )
+            })}
+          </>
         )
-    }
+      }
 }
 
 export default Daters;
