@@ -724,3 +724,45 @@ Processing by UsersController#index as */*
 Completed 200 OK in 4ms (Views: 1.0ms | ActiveRecord: 0.6ms | Allocations: 1588)
 
 
+Started GET "/users" for ::1 at 2020-05-06 20:20:32 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7:in `index'
+Completed 200 OK in 12ms (Views: 1.6ms | ActiveRecord: 1.4ms | Allocations: 1711)
+
+
+Started GET "/users" for ::1 at 2020-05-06 20:32:56 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7:in `index'
+Completed 200 OK in 7ms (Views: 2.2ms | ActiveRecord: 1.3ms | Allocations: 1723)
+
+
+Started GET "/users" for ::1 at 2020-05-06 20:33:16 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7:in `index'
+Completed 200 OK in 6ms (Views: 1.4ms | ActiveRecord: 0.7ms | Allocations: 1595)
+
+
+Started GET "/users" for ::1 at 2020-05-06 20:51:02 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7:in `index'
+Completed 200 OK in 7ms (Views: 2.6ms | ActiveRecord: 1.3ms | Allocations: 1723)
+
+
+Started GET "/users" for ::1 at 2020-05-06 20:56:46 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (5.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7:in `index'
+Completed 200 OK in 27ms (Views: 2.7ms | ActiveRecord: 5.3ms | Allocations: 1722)
+
+
+Started GET "/users" for ::1 at 2020-05-06 20:57:16 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7:in `index'
+Completed 200 OK in 13ms (Views: 7.3ms | ActiveRecord: 0.7ms | Allocations: 1595)
+
+

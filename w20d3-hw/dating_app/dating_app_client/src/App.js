@@ -45,7 +45,7 @@ componentDidMount() {
             </aside>
           </div>
 
-        <footer><h2>JOIN OUR DATING POOL!</h2>
+        <footer><h3>JOIN OUR DATING POOL!</h3>
           <NewDater baseURL={baseURL}/>
         </footer>
 

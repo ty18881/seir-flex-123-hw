@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-
+import "../App.css"
 class NewDater extends Component {
 
     // update state as values are entered in the form.
@@ -71,7 +71,7 @@ console.log("HANDLE SUBMIT - Base URL", this.props.baseURL)
                 id="name"
                 name="name"
                 onChange={this.handleInputChange}
-                placeholder="Dater Name"
+                placeholder="Name"
             />
             <label htmlFor="image"></label>
             <input 
