@@ -16,6 +16,10 @@ header, footer {
   border: 1px solid purple
 }
 
+.dater {
+  border: 1px solid purple;
+}
+
 @media (min-width: 768px) {
   .HolyGrail-body {
     flex-direction: row;

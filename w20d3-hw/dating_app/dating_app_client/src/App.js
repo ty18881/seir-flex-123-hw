@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 
 import './App.css';
 import Daters from "./components/Hello.js"
+import NewDater from "./components/NewDater.js"
 
+const baseURL = "http://localhost:3000/users";
 class App extends Component {
 
   // hold daters in state
@@ -26,20 +28,26 @@ componentDidMount() {
   return (
     <div className="App">
       <div className="HolyGrail">
-        <header><h1>YOUR HEADER HERE</h1></header>
+        <header><h1>Welcome to the Dating Game!</h1></header>
         <div className="HolyGrail-body"> 
 
 
             <main className="HolyGrail-content"><h2>The Big Open Space in the Center</h2></main>
-            <nav className="HolyGrail-nav"><h2>The Left Hand Side Pane</h2>
-              <Daters daters={this.state.daters.splice(0,3)}/>
+            <nav className="HolyGrail-nav">
+              <Daters 
+                daters={this.state.daters.splice(0,3)}
+                />
             </nav>
-            <aside className="HolyGrail-ads"><h2>The Right Hand Side Pane</h2>
-              <Daters daters={this.state.daters.splice(0,3)}/>
+            <aside className="HolyGrail-ads">
+              <Daters 
+              daters={this.state.daters.splice(0,3)}
+              />
             </aside>
           </div>
 
-        <footer><h2>YOUR FOOTER HERE - Eventually a form</h2></footer>
+        <footer><h2>JOIN OUR DATING POOL!</h2>
+          <NewDater baseURL={baseURL}/>
+        </footer>
 
       </div>
      

@@ -8,8 +8,8 @@ class Daters extends Component {
             
             {this.props.daters.map( dater => {
               return (
-                <div key={dater.id}>
-                  <h3>Name: {dater.name} </h3>
+                <div key={dater.id} className="dater">
+                  <h3>{dater.name} </h3>
                   <img src={dater.img} alt={dater.name}/>
                   <h4>Starsign: {dater.starsign} </h4>
                   <h4>Age: {dater.age} </h4>
