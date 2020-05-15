@@ -24,6 +24,7 @@ componentDidMount() {
     this.getDaters();
 }
 
+
   render () {
   return (
     <div className="App">
@@ -39,7 +40,7 @@ componentDidMount() {
                 />
             </nav>
             <aside className="HolyGrail-ads">
-              <Daters 
+              <Daters
               daters={this.state.daters.splice(0,3)}
               />
             </aside>
