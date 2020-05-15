@@ -1,3 +1,8 @@
+/**
+ * Example courtesy of
+ * https://medium.com/@thanhbinh.tran93/react-state-management-fb857a2432cf
+ */
+
 import React from 'react';
 import { Movies } from './Movies';
 import { MoviesProvider } from './MoviesContext';
